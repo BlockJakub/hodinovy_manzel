@@ -1,25 +1,149 @@
 /* style.css - základní styly (nahraj do css/style.css) */
 
-:root{
+:root {
   --primary: #0d6efd;
   --muted: #6c757d;
-  --hero-overlay: linear-gradient(120deg,#0d6efd66,#0dcaf066);
+  --hero-overlay: linear-gradient(120deg, #0d6efd66, #0dcaf066);
 }
 
-body{
+body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: #212529;
   scroll-behavior: smooth;
 }
 
+header .language-switch a {
+  text-align: center;
+  padding: 0.25rem 1rem;
+  background-color: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
 /* Header */
-header .logo { letter-spacing: .2px; }
+header .logo {
+  letter-spacing: .2px;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #2d3748;
+  color: #ffffff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  border-bottom: 2px solid #2d3748;
+}
+
+/* BEM Element: Navbar menu */
+.navbar__menu {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+/* BEM Modifier for mobile menu */
+.navbar__menu--mobile {
+  /* Now uses flexbox and position to control visibility */
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  /* Initially off-screen */
+  width: 100%;
+  height: 100vh;
+  background-color: #2d3748;
+  padding-top: 4rem;
+  align-items: center;
+  transition: left 1.7s ease-in-out;
+  transition-delay: 0.3s;
+}
+
+/* BEM Modifier for open state (mobile) */
+.navbar__menu--open {
+  left: 0;
+  /* Slide into view */
+}
+
+/* BEM Element: Toggle button */
+.navbar__toggle {
+  display: none;
+  /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+}
+
+/* Hamburger icon styles */
+.navbar__toggle-icon,
+.navbar__toggle-icon::before,
+.navbar__toggle-icon::after {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar__toggle-icon {
+  position: relative;
+}
+
+.navbar__toggle-icon::before,
+.navbar__toggle-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.navbar__toggle-icon::before {
+  top: -8px;
+}
+
+.navbar__toggle-icon::after {
+  top: 8px;
+}
+
+/* State for the icon when the menu is open */
+.navbar__toggle--is-open .navbar__toggle-icon {
+  background-color: transparent;
+  /* Middle line disappears */
+}
+
+.navbar__toggle--is-open .navbar__toggle-icon::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.navbar__toggle--is-open .navbar__toggle-icon::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar__link:hover {
+  background-color: #4a5568;
+}
 
 /* Hero */
 #hero {
   background-size: cover;
   background-position: center;
   position: relative;
+  height: calc(100vh - -156px);
 }
 
 /* Services cards animation */
@@ -27,31 +151,52 @@ header .logo { letter-spacing: .2px; }
   transition: transform .25s ease, box-shadow .25s ease;
   border: none;
 }
+
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(13,110,253,0.12);
+  box-shadow: 0 10px 25px rgba(13, 110, 253, 0.12);
 }
 
 /* Portfolio overlay */
-.portfolio-item { cursor: pointer; }
-.portfolio-item img { transition: transform .35s ease; display:block; }
+.portfolio-item {
+  cursor: pointer;
+}
+
+.portfolio-item img {
+  transition: transform .35s ease;
+  display: block;
+}
+
 .portfolio-item .overlay {
   position: absolute;
-  left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.5);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   transform: translateY(100%);
   transition: transform .3s ease;
 }
-.portfolio-item:hover img { transform: scale(1.05); }
-.portfolio-item:hover .overlay { transform: translateY(0%); }
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-item:hover .overlay {
+  transform: translateY(0%);
+}
 
 /* Testimonials */
-.carousel .blockquote { font-size: 1rem; }
+.carousel .blockquote {
+  font-size: 1rem;
+}
 
 /* Small screens spacing */
 @media (max-width: 576px) {
-  #hero { padding: 4rem 0; min-height: 50vh; }
+  #hero {
+    padding: 4rem 0;
+    min-height: 50vh;
+  }
 }
 
 /* Fade-in visible class */
@@ -60,10 +205,52 @@ header .logo { letter-spacing: .2px; }
   transform: translateY(15px);
   transition: opacity .6s ease, transform .6s ease;
 }
+
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Footer */
-footer { background: #f8f9fa; }
+footer {
+  background: #f8f9fa;
+}
+
+
+
+
+/* Responsive styles */
+/* Responsive design with media queries */
+@media (max-width: 768px) {
+  .navbar__toggle {
+    display: block;
+  }
+
+  /* No longer hiding the menu here */
+  .navbar__menu {
+    /* Inherits from navbar__menu--mobile */
+
+    display: none;
+  }
+
+}
+
+@media (min-width: 769px) {
+  .navbar__menu--mobile {
+    all: unset;
+    /* Reset all mobile styles for desktop */
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    list-style: none;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    position: static;
+  }
+
+  .navbar__menu--mobile .navbar__link {
+    color: white;
+  }
+}

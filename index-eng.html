@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Handyman — reliable home services</title>
+    <meta name="description"
+        content="Handyman – furniture assembly, drilling, shelf installation, lamp replacement and other small home repairs. Quality, fast and at a fair price.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- jQuery (for animations) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Bootstrap bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Own JS -->
+    <script defer src="sidebar_responsive.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER / NAV -->
+    <header class="bg-primary text-white sticky-top shadow-sm">
+        <div class="language-switch">
+            <a href="index.html">🇨🇿 CZ</a> |
+            <a href="index-eng.html">🇬🇧 EN</a>
+        </div>
+
+        <div class="container">
+            <nav class="navbar container navbar-expand-lg">
+                <div class="navbar__brand">
+                    <a href="#hero" class="text-2xl font-bold">
+                        <logo><img src="Img/logo_handy_man.jpg" width="96" height="96"></logo>
+                    </a>
+                </div>
+
+                <!-- Hamburger icon -->
+                <button id="toggle-btn" class="navbar__toggle" aria-label="Toggle navigation">
+                    <span class="navbar__toggle-icon"></span>
+                </button>
+
+                <!-- Navigation menu -->
+                <ul id="menu" class="navbar__menu navbar__menu--mobile">
+                    <li><a href="#hero" class="navbar__link">Home</a></li>
+                    <li><a href="#services" class="navbar__link">Services</a></li>
+                    <li><a href="#about" class="navbar__link">About</a></li>
+                    <li><a href="#portfolio" class="navbar__link">Projects</a></li>
+                    <li><a href="#testimonials" class="navbar__link">Testimonials</a></li>
+                    <li><a href="#contact" class="navbar__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero" class="text-white d-flex align-items-center"
+        style="min-height:70vh; background: linear-gradient(120deg,#0d6efd66,#0dcaf066), url('Img/Firefly_professional_handyman.jpg') center/cover no-repeat;">
+        <div class="container text-center py-5">
+            <h1 class="display-5 fw-bold">Handyman — work around your home</h1>
+            <p class="lead mb-4">Shelf installation, furniture assembly, lamp replacement, small repairs and anything a
+                skilled helper can do.</p>
+
+            <div class="d-flex justify-content-center gap-3">
+                <a href="tel:+420603861311" class="btn btn-light btn-lg"><i class="bi bi-telephone"></i> Call</a>
+                <a href="#services" class="btn btn-outline-light btn-lg">Our Services</a>
+            </div>
+
+            <p class="mt-3 small opacity-75">Note: This website is a presentation card — we do not store any personal
+                data.</p>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">What I can do for you</h2>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 service-card">
+                        <div class="card-body text-center">
+                            <div class="icon mb-3"><i class="bi bi-hammer fs-1"></i></div>
+                            <h5 class="card-title">Drilling & shelf installation</h5>
+                            <p class="card-text">Precise drilling, wall anchoring, brackets and load-bearing elements
+                                installation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 service-card">
+                        <div class="card-body text-center">
+                            <div class="icon mb-3"><i class="bi bi-lightbulb fs-1"></i></div>
+                            <h5 class="card-title">Lamp installation / chandelier replacement</h5>
+                            <p class="card-text">Mechanical mounting and fixing of lighting. (Complex electrical work is
+                                recommended to a certified electrician.)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 service-card">
+                        <div class="card-body text-center">
+                            <div class="icon mb-3"><i class="bi bi-box-seam fs-1"></i></div>
+                            <h5 class="card-title">Furniture assembly</h5>
+                            <p class="card-text">Flat-pack furniture assembly (IKEA and others).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 service-card">
+                        <div class="card-body text-center">
+                            <div class="icon mb-3"><i class="bi bi-tv fs-1"></i></div>
+                            <h5 class="card-title">TV & wall mount installation</h5>
+                            <p class="card-text">Safe installation of mounts and securing your TV.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 service-card">
+                        <div class="card-body text-center">
+                            <div class="icon mb-3"><i class="bi bi-droplet fs-1"></i></div>
+                            <h5 class="card-title">Small plumbing jobs</h5>
+                            <p class="card-text">Seal replacement, shower head change, drain fixes, faucet installation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 service-card">
+                        <div class="card-body text-center">
+                            <div class="icon mb-3"><i class="bi bi-wrench-adjustable fs-1"></i></div>
+                            <h5 class="card-title">Small repairs & maintenance</h5>
+                            <p class="card-text">Door fixes, hinges, locks, seals, adjustments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <small class="text-muted">If the job involves complex electrical work, gas or extensive plumbing, we
+                    will arrange a consultation and recommend a specialist.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-md-4 text-center">
+                    <img src="Img/snowboarder.jpg" alt="Handyman" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-8">
+                    <h2>About Me</h2>
+                    <p class="lead">My name is <strong>Antonín Pětník</strong>. I offer hourly work and small home
+                        repairs — reliable, tidy and for a fair price. I have many years of experience in assembly,
+                        repairs and home maintenance. I am honest, punctual and if something cannot be fixed during a
+                        visit, I will tell you upfront.</p>
+
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-check2-circle text-success"></i> Reliability & punctuality</li>
+                        <li><i class="bi bi-check2-circle text-success"></i> Fair hourly rate</li>
+                        <li><i class="bi bi-check2-circle text-success"></i> Insured and responsible approach</li>
+                    </ul>
+
+                    <div class="mt-3">
+                        <a href="tel:+420603861311" class="btn btn-primary me-2"><i class="bi bi-telephone"></i>
+                            Call</a>
+                        <a href="mailto:handyman@example.com" class="btn btn-outline-primary">Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">Completed Projects</h2>
+
+            <div class="row g-3">
+                <div class="col-sm-6 col-md-4">
+                    <div class="portfolio-item position-relative overflow-hidden">
+                        <img src="Img/firefly_bakingpizza.jpg" alt="Fireplace project" class="img-fluid w-100">
+                        <div class="overlay p-3">
+                            <h5>Building a pizza fireplace</h5>
+                            <p class="small mb-0">Precise anchoring and masonry following thermodynamics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="portfolio-item position-relative overflow-hidden">
+                        <img src="Img/furniture.jpg" alt="Furniture assembly" class="img-fluid w-100">
+                        <div class="overlay p-3">
+                            <h5>Furniture assembly</h5>
+                            <p class="small mb-0">Cabinet setup and adjustment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="portfolio-item position-relative overflow-hidden">
+                        <img src="Img/plumbers.jpg" alt="Plumbing" class="img-fluid w-100">
+                        <div class="overlay p-3">
+                            <h5>Siphon replacement</h5>
+                            <p class="small mb-0">Recommended plumbing service.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4 text-center">Testimonials</h2>
+
+            <div id="testCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner text-center">
+                    <div class="carousel-item active">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">"Fast and clean work. Mr. Novák mounted shelves for me within an hour —
+                                excellent job!"</p>
+                            <footer class="blockquote-footer m-2">Petra, Prague</footer>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">"Furniture assembly without stress. Everything was perfectly built and ready
+                                to use."</p>
+                            <footer class="blockquote-footer m-2">Martin, Brno</footer>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">"Vacuum cleaner repair — he managed even without a manual. Experienced
+                                worker!"</p>
+                            <footer class="blockquote-footer m-2">Jana, Plzeň</footer>
+                        </blockquote>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTER -->
+    <section id="stats" class="py-5 bg-light text-center">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="p-4 border rounded shadow-sm bg-white">
+                        <h2 class="counter display-4 fw-bold" data-target="1250">0</h2>
+                        <p class="mb-0">Website visitors</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 border rounded shadow-sm bg-white">
+                        <h2 class="counter display-4 fw-bold" data-target="320">0</h2>
+                        <p class="mb-0">Jobs completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">Frequently Asked Questions</h2>
+
+            <div class="accordion" id="faqAcc">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="q1">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#a1">How quickly can you arrive?</button>
+                    </h2>
+                    <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc">
+                        <div class="accordion-body">I usually respond within 24 hours. For urgent cases, please call
+                            directly.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="q2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#a2">How do I pay?</button>
+                    </h2>
+                    <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                        <div class="accordion-body">Cash on site or by bank transfer upon agreement.</div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="q3">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#a3">Do you work on weekends?</button>
+                    </h2>
+                    <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+                        <div class="accordion-body">Yes, on weekends by prior arrangement.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2>Contact</h2>
+            <p class="lead">Quick contact — call to arrange a visit</p>
+            <div class="fs-4 fw-bold">
+                <a href="tel:+420603861311" class="text-white text-decoration-none"><i
+                        class="bi bi-telephone me-2"></i>+420 603 861 311</a>
+            </div>
+            <p class="mt-2 mb-0">Area covered: <strong>Prague and surroundings</strong> (adjust as needed).</p>
+            <p class="small mt-3 opacity-75">This website does not store personal data. For larger projects I can
+                provide a price quote by phone.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-3 text-center">
+        <div class="container">
+            <p class="mb-2">© <span id="year"></span> Handyman – All rights reserved</p>
+            <div class="social-icons">
+                <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-light me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="#" class="text-light"><i class="fab fa-youtube fa-lg"></i></a>
+            </div>
+            <small class="text-muted d-block mt-2">This website is a presentation card (no forms). We do not collect
+                client data for cybersecurity reasons.</small>
+        </div>
+    </footer>
+
+    <!-- JS scripts (same as CZ version) -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        $(document).ready(function () {
+            let countersStarted = false;
+            function animateCounters() {
+                $('.counter').each(function () {
+                    let $this = $(this);
+                    let target = +$this.attr('data-target');
+                    let count = 0;
+                    let step = target / 200;
+                    let interval = setInterval(function () {
+                        count += step;
+                        if (count >= target) {
+                            count = target;
+                            clearInterval(interval);
+                        }
+                        $this.text(Math.floor(count));
+                    }, 10);
+                });
+            }
+            $(window).on('scroll', function () {
+                let statsTop = $('#stats').offset().top - window.innerHeight + 100;
+                if (!countersStarted && $(window).scrollTop() > statsTop) {
+                    animateCounters();
+                    countersStarted = true;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
