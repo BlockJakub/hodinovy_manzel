@@ -7,79 +7,88 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: #212529;
-  scroll-behavior: smooth;
-}
-
-header .language-switch a {
-  text-align: center;
-  padding: 0.25rem 1rem;
-  background-color: inherit;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-/* Header */
-header .logo {
-  letter-spacing: .2px;
-}
-
-.navbar {
-  width: 100%;
-  background-color: #2d3748;
-  color: #ffffff;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  margin: 0;
   font-family: 'Inter', sans-serif;
-  border-bottom: 2px solid #2d3748;
+  background: #f8f9fa;
 }
 
-/* BEM Element: Navbar menu */
+header {
+  background: #ffc107;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+/* Language switch */
+.language-switch {
+  text-align: right;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+
+.language-switch a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  margin: 0 0.25rem;
+}
+
+.language-switch a:hover {
+  background-color: #2d3748;
+  padding: 0.3rem;
+  border-radius: 7px;
+
+}
+
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.7rem 1rem;
+}
+
+.navbar__brand img {
+  border-radius: 50%;
+}
+
+/* Menu desktop */
 .navbar__menu {
   list-style: none;
   display: flex;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
-/* BEM Modifier for mobile menu */
-.navbar__menu--mobile {
-  /* Now uses flexbox and position to control visibility */
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: -100%;
-  /* Initially off-screen */
-  width: 100%;
-  height: 100vh;
+.navbar__link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.navbar__link:hover {
   background-color: #2d3748;
-  padding-top: 4rem;
-  align-items: center;
-  transition: left 1.7s ease-in-out;
-  transition-delay: 0.3s;
 }
 
-/* BEM Modifier for open state (mobile) */
-.navbar__menu--open {
-  left: 0;
-  /* Slide into view */
-}
-
-/* BEM Element: Toggle button */
+/* Hamburger button */
 .navbar__toggle {
   display: none;
-  /* Hidden on desktop */
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1100;
 }
 
-/* Hamburger icon styles */
 .navbar__toggle-icon,
 .navbar__toggle-icon::before,
 .navbar__toggle-icon::after {
@@ -89,31 +98,28 @@ header .logo {
   background-color: white;
   border-radius: 3px;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  content: '';
 }
 
 .navbar__toggle-icon {
   position: relative;
 }
 
-.navbar__toggle-icon::before,
-.navbar__toggle-icon::after {
-  content: '';
+.navbar__toggle-icon::before {
   position: absolute;
+  top: -8px;
   left: 0;
 }
 
-.navbar__toggle-icon::before {
-  top: -8px;
-}
-
 .navbar__toggle-icon::after {
+  position: absolute;
   top: 8px;
+  left: 0;
 }
 
-/* State for the icon when the menu is open */
+/* Open state */
 .navbar__toggle--is-open .navbar__toggle-icon {
   background-color: transparent;
-  /* Middle line disappears */
 }
 
 .navbar__toggle--is-open .navbar__toggle-icon::before {
@@ -124,26 +130,42 @@ header .logo {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.navbar__link {
-  text-decoration: none;
-  color: white;
-  font-size: 1.25rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
-}
+/* Mobile menu */
+@media (max-width: 991px) {
+  .navbar__toggle {
+    display: block;
+  }
 
-.navbar__link:hover {
-  background-color: #4a5568;
+  .navbar__menu {
+    display: none;
+  }
+
+  .navbar__menu.navbar__menu--mobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: #2d3748;
+    padding-top: 5rem;
+    align-items: center;
+    transition: left 0.5s ease-in-out;
+  }
+
+  .navbar__menu--open {
+    left: 0;
+  }
 }
 
 /* Hero */
+/* Hero area: use a sane min-height and correct calc (removed double-negative) */
 #hero {
   background-size: cover;
   background-position: center;
   position: relative;
-  height: calc(100vh - -156px);
+  min-height: calc(100vh - 156px);
 }
 
 /* Services cards animation */
@@ -155,6 +177,80 @@ header .logo {
 .service-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 25px rgba(13, 110, 253, 0.12);
+}
+
+/* Flip card styles */
+.flip-card {
+  perspective: 1200px;
+  /* creates 3D space */
+  -webkit-perspective: 1200px;
+  position: relative;
+  /* keep in document flow */
+  overflow: hidden;
+  /* hide faces during rotation */
+  min-height: 260px;
+  /* ensures card contributes to layout and prevents overlap */
+  margin-bottom: 1rem;
+  /* breathing room when flipped */
+}
+
+.flip-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(.2, .9, .2, 1);
+  will-change: transform;
+}
+
+.flip-card__front,
+.flip-card__back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  /* ensure internal spacing */
+}
+
+.flip-card__front {
+  z-index: 2;
+}
+
+.flip-card__back {
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, #0d6efd11, #0dcaf022);
+  color: #0d2b3a;
+}
+
+/* Flip on hover or focus within for keyboard users */
+.flip-card:hover .flip-card__inner,
+.flip-card:focus-within .flip-card__inner,
+.flip-card.nav-open .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card .back-inner {
+  padding: 1rem;
+}
+
+/* improve contrast for back side text */
+.flip-card__back .card-title {
+  color: #0b2a3a;
+  font-weight: 700;
+}
+
+/* responsive: reduce rotation duration on small screens */
+@media (max-width: 576px) {
+  .flip-card__inner {
+    transition: transform 0.55s cubic-bezier(.2, .9, .2, 1);
+  }
 }
 
 /* Portfolio overlay */
@@ -191,6 +287,13 @@ header .logo {
   font-size: 1rem;
 }
 
+/* Fix: selector should target the accordion item class */
+.accordion-item {
+  border: none;
+  background-image: linear-gradient(120deg, #0d6efd33, #0dcaf033);
+  font-weight: 900;
+}
+
 /* Small screens spacing */
 @media (max-width: 576px) {
   #hero {
@@ -213,7 +316,20 @@ header .logo {
 
 /* Footer */
 footer {
-  background: #f8f9fa;
+  font-family: "Montserrat", Source Sans Pro, sans-serif;
+  /* název fontu z Adobe */
+}
+
+.social-icons a {
+  display: inline-block;
+  font-size: 2.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #0d6efd;
+  /* modrá (Bootstrap primary) nebo si zvol vlastní */
 }
 
 
@@ -235,7 +351,7 @@ footer {
 
 }
 
-@media (min-width: 769px) {
+@media (min-width: 992px) {
   .navbar__menu--mobile {
     all: unset;
     /* Reset all mobile styles for desktop */

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hodinový manžel — spolehlivé domácí práce</title>
+  <title>Hodinový manžel</title>
   <meta name="description"
     content="Hodinový manžel – montáže, vrtání, montáž nábytku, výměna lustrů a další drobné domácí práce. Kvalitně, rychle a za férovou cenu.">
 
@@ -13,6 +13,7 @@
 
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/lft2pcd.css">
 
   <!-- Vlastní CSS -->
   <link rel="stylesheet" href="style.css">
@@ -23,12 +24,28 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Vlastní JS -->
   <script defer src="sidebar_responsive.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+
+  <script>
+    // Safe logo animation: target the img inside the navbar brand figure if anime is loaded
+    if (typeof anime !== 'undefined') {
+      const logoImg = document.querySelector('.navbar__brand figure img');
+      if (logoImg) {
+        anime({
+          targets: logoImg,
+          rotate: '1turn',
+          duration: 2000,
+          easing: 'easeInOutSine'
+        });
+      }
+    }
+  </script>
 </head>
 
 <body>
 
   <!-- HEADER / NAV -->
-  <header class="bg-primary text-white sticky-top shadow-sm">
+  <header class="bg-warning text-white sticky-top shadow-sm">
 
 
     <div class="container">
@@ -36,10 +53,12 @@
         <a href="index.html">CZ</a> |
         <a href="index-eng.html">ENG</a>
       </div>
-      <nav class="navbar container navbar-expand-lg">
+      <nav class="navbar container navbar-expand-lg rounded shadow-lg">
         <div class="navbar__brand">
-          <a href="#hero" class="text-2xl font-bold">
-            <logo><img src="Img/logo_handy_man.jpg" width="96" height="96"></logo>
+          <a href="#hero" class="text-2xl font-bold" aria-label="Home">
+            <!-- Replaced non-standard <logo> tag with a standard figure for accessibility -->
+            <figure class="m-0"><img src="Img/logo_handy_man.jpg" width="96" height="96" alt="Hodinový manžel logo"
+                class="d-inline-block"></figure>
           </a>
         </div>
 
@@ -64,13 +83,13 @@
   <!-- HERO -->
   <section id="hero" class="text-white d-flex align-items-center"
     style="min-height:70vh; background: linear-gradient(120deg,#0d6efd66,#0dcaf066), url('Img/Firefly_professional_handyman.jpg') center/cover no-repeat;">
-    <div class="container text-center py-5">
-      <h1 class="display-5 fw-bold">Hodinový manžel — práce kolem domova</h1>
-      <p class="lead mb-4">Montáže polic, montáž nábytku, výměna svítidel, drobné opravy a vše, co zvládne zkušený
+    <div class="container text-center py-5 large grid centered square-grid">
+      <h1 class="display-1 fw-bold text-xl">Hodinový manžel, práce kolem domova</h1>
+      <p class="lead mb-4 fw-medium">Práce kolem domova. Montáže polic, montáž nábytku, výměna svítidel, drobné opravy a
+        vše, co zvládne zkušený
         pomocník.</p>
 
       <div class="d-flex justify-content-center gap-3">
-        <!-- Replace phone number with real one -->
         <a href="tel:+420 603 861 311" class="btn btn-light btn-lg"><i class="bi bi-telephone"></i> Zavolat</a>
         <a href="#services" class="btn btn-outline-light btn-lg">Naše služby</a>
       </div>
@@ -86,62 +105,116 @@
 
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="card h-100 service-card">
-            <div class="card-body text-center">
-              <div class="icon mb-3"><i class="bi bi-hammer fs-1"></i></div>
-              <h5 class="card-title">Vrtání a montáž polic</h5>
-              <p class="card-text">Přesné vrtání, kotvení do zdi, montáž konzolí a nosných prvků.</p>
+          <div class="card h-100 service-card flip-card" tabindex="0">
+            <div class="flip-card__inner">
+              <div class="flip-card__front card-body text-center">
+                <div class="icon mb-3"><i class="bi bi-hammer fs-1"></i></div>
+                <h5 class="card-title">Vrtání a montáž polic</h5>
+                <p class="card-text">Přesné vrtání, kotvení do zdi, montáž konzolí a nosných prvků.</p>
+              </div>
+              <div class="flip-card__back card-body text-center">
+                <div class="back-inner">
+                  <h5 class="card-title">Orient. cena / čas</h5>
+                  <p class="mb-1">Cena: 350–700 Kč</p>
+                  <p class="mb-0">Čas: 30–90 min</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card">
-            <div class="card-body text-center">
-              <div class="icon mb-3"><i class="bi bi-lightbulb fs-1"></i></div>
-              <h5 class="card-title">Montáž svítidel / výměna lustrů</h5>
-              <p class="card-text">Mechanická montáž a upevnění svítidel. (Komplexní elektro práce doporučujeme svěřit
-                elektrikáři.)</p>
+          <div class="card h-100 service-card flip-card" tabindex="0">
+            <div class="flip-card__inner">
+              <div class="flip-card__front card-body text-center">
+                <div class="icon mb-3"><i class="bi bi-lightbulb fs-1"></i></div>
+                <h5 class="card-title">Montáž svítidel / výměna lustrů</h5>
+                <p class="card-text">Mechanická montáž a upevnění svítidel. (Komplexní elektro práce doporučujeme svěřit
+                  elektrikáři.)</p>
+              </div>
+              <div class="flip-card__back card-body text-center">
+                <div class="back-inner">
+                  <h5 class="card-title">Orient. cena / čas</h5>
+                  <p class="mb-1">Cena: 450–1200 Kč</p>
+                  <p class="mb-0">Čas: 30–120 min</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card">
-            <div class="card-body text-center">
-              <div class="icon mb-3"><i class="bi bi-box-seam fs-1"></i></div>
-              <h5 class="card-title">Montáž nábytku</h5>
-              <p class="card-text">Sestavení nábytku z krabice (IKEA a další).</p>
+          <div class="card h-100 service-card flip-card" tabindex="0">
+            <div class="flip-card__inner">
+              <div class="flip-card__front card-body text-center">
+                <div class="icon mb-3"><i class="bi bi-box-seam fs-1"></i></div>
+                <h5 class="card-title">Montáž nábytku</h5>
+                <p class="card-text">Sestavení nábytku z krabice (IKEA a další).</p>
+              </div>
+              <div class="flip-card__back card-body text-center">
+                <div class="back-inner">
+                  <h5 class="card-title">Orient. cena / čas</h5>
+                  <p class="mb-1">Cena: 350–2500 Kč</p>
+                  <p class="mb-0">Čas: 30 min – 6 hodin (podle rozsahu)</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card">
-            <div class="card-body text-center">
-              <div class="icon mb-3"><i class="bi bi-tv fs-1"></i></div>
-              <h5 class="card-title">Montáž TV / držáků</h5>
-              <p class="card-text">Bezpečné upevnění držáku a připevnění televize.</p>
+          <div class="card h-100 service-card flip-card" tabindex="0">
+            <div class="flip-card__inner">
+              <div class="flip-card__front card-body text-center">
+                <div class="icon mb-3"><i class="bi bi-tv fs-1"></i></div>
+                <h5 class="card-title">Montáž TV / držáků</h5>
+                <p class="card-text">Bezpečné upevnění držáku a připevnění televize.</p>
+              </div>
+              <div class="flip-card__back card-body text-center">
+                <div class="back-inner">
+                  <h5 class="card-title">Orient. cena / čas</h5>
+                  <p class="mb-1">Cena: 600–2500 Kč</p>
+                  <p class="mb-0">Čas: 45–120 min</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card">
-            <div class="card-body text-center">
-              <div class="icon mb-3"><i class="bi bi-droplet fs-1"></i></div>
-              <h5 class="card-title">Drobné instalatérské práce</h5>
-              <p class="card-text">Výměna těsnění, sprchových hlavic, odtékání, instalace baterií.</p>
+          <div class="card h-100 service-card flip-card" tabindex="0">
+            <div class="flip-card__inner">
+              <div class="flip-card__front card-body text-center">
+                <div class="icon mb-3"><i class="bi bi-droplet fs-1"></i></div>
+                <h5 class="card-title">Drobné instalatérské práce</h5>
+                <p class="card-text">Výměna těsnění, sprchových hlavic, odtékání, instalace baterií.</p>
+              </div>
+              <div class="flip-card__back card-body text-center">
+                <div class="back-inner">
+                  <h5 class="card-title">Orient. cena / čas</h5>
+                  <p class="mb-1">Cena: 300–1500 Kč</p>
+                  <p class="mb-0">Čas: 20–120 min</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card">
-            <div class="card-body text-center">
-              <div class="icon mb-3"><i class="bi bi-wrench-adjustable fs-1"></i></div>
-              <h5 class="card-title">Drobné opravy a údržba</h5>
-              <p class="card-text">Opravy dveří, pantů, klik, těsnění, drobné seřízení.</p>
+          <div class="card h-100 service-card flip-card" tabindex="0">
+            <div class="flip-card__inner">
+              <div class="flip-card__front card-body text-center">
+                <div class="icon mb-3"><i class="bi bi-wrench-adjustable fs-1"></i></div>
+                <h5 class="card-title">Drobné opravy a údržba</h5>
+                <p class="card-text">Opravy dveří, pantů, klik, těsnění, drobné seřízení.</p>
+              </div>
+              <div class="flip-card__back card-body text-center">
+                <div class="back-inner">
+                  <h5 class="card-title">Orient. cena / čas</h5>
+                  <p class="mb-1">Cena: 200–1200 Kč</p>
+                  <p class="mb-0">Čas: 15–180 min</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -159,7 +232,8 @@
     <div class="container">
       <div class="row align-items-center g-4">
         <div class="col-md-4 text-center">
-          <img src="Img/snowboarder.jpg" alt="Hodinový manžel" class="img-fluid rounded shadow">
+          <a href="https://www.facebook.com/antonin.petnik"><img src="Img/snowboarder.jpg" alt="Hodinový manžel"
+              class="img-fluid rounded shadow"></a>
         </div>
         <div class="col-md-8">
           <h2>O mně</h2>
@@ -193,7 +267,7 @@
         <!-- Každý obrázek nahraď reálnými fotkami v /img/ -->
         <div class="col-sm-6 col-md-4">
           <div class="portfolio-item position-relative overflow-hidden">
-            <img src="Img/firefly_bakingpizza.jpg" alt="Montáž police" class="img-fluid w-100">
+            <img src="Img/Firefly_bakingPizza.jpg" alt="Montáž police" class="img-fluid w-100">
             <div class="overlay p-3">
               <h5>Budování pizza krbu</h5>
               <p class="small mb-0">Přesné kotvení a budovani podle termodinamiky zdiva.</p>
@@ -234,7 +308,8 @@
         <div class="carousel-inner text-center">
           <div class="carousel-item active">
             <blockquote class="blockquote">
-              <p class="mb-0">"Rychlé a čisté provedení. Pan Novák mi přimontoval police během hodiny — skvělá práce!"
+              <p class="mb-0">"Rychlé a čisté provedení. Pan Antonín Pětník mi přimontoval police během hodiny — skvělá
+                práce!"
               </p>
               <footer class="blockquote-footer m-2">Petra, Praha</footer>
             </blockquote>
@@ -245,25 +320,19 @@
               <footer class="blockquote-footer m-2">Martin, Brno</footer>
             </blockquote>
           </div>
-        </div>
-        <div class="carousel-item">
-          <blockquote class="blockquote">
-            <p class="mb-0">"Montáž automonosynchronni spojky vysavace. Zkuseny pracovnik docilil uspechu i bez navodu k
-              oprave."</p>
-            <footer class="blockquote-footer m-2">Martin, Brno</footer>
-          </blockquote>
+          <div class="carousel-item">
+            <blockquote class="blockquote">
+              <p class="mb-0">"Montáž automonosynchronni spojky vysavace. Zkuseny pracovnik docilil uspechu i bez navodu
+                k oprave. Zde se odbornik prokazal, musim rict."</p>
+              <footer class="blockquote-footer m-2">Martin, Brno</footer>
+            </blockquote>
+          </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
-
     </div>
   </section>
+
+  <div class="my-lg-5"></div>
 
   <!-------------------  COUNTER  ----------------    -->
 
@@ -291,48 +360,142 @@
 
 
   <!-- FAQ -->
+  <!-- FAQ -->
   <section id="faq" class="py-5">
     <div class="container">
-      <h2 class="mb-4 text-center">Často kladené dotazy</h2>
+      <h2 class="mb-4 text-center">Často kladené otázky</h2>
+      <hr class="mb-4">
 
-      <div class="accordion" id="faqAcc">
+      <div class="accordion mt-5" id="accordionExample">
+        <!-- Q1 -->
         <div class="accordion-item">
-          <h2 class="accordion-header" id="q1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">Jak rychle
-              přijedete?</button>
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="true" aria-controls="collapseOne">
+              Jak rychle můžete přijet?
+            </button>
           </h2>
-          <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAcc">
-            <div class="accordion-body">Snažím se reagovat do 24 hodin. U naléhavých věcí volejte přímo na telefon.
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Obvykle reaguji do <strong>24 hodin</strong>.
+              V naléhavých případech mi prosím zavolejte přímo a pokusím se domluvit návštěvu ještě tentýž den.
             </div>
           </div>
         </div>
 
+        <!-- Q2 -->
         <div class="accordion-item">
-          <h2 class="accordion-header" id="q2">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Jak
-              se platí?</button>
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Jak u vás probíhá platba?
+            </button>
           </h2>
-          <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
-            <div class="accordion-body">Hotově na místě nebo bankovním převodem po domluvě.</div>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Nejčastější způsob je <strong>hotově na místě</strong>.
+              Je také možné zaplatit převodem na účet po předchozí domluvě.
+              U větších zakázek mohu požadovat malou zálohu na materiál.
+            </div>
           </div>
         </div>
 
+        <!-- Q3 -->
         <div class="accordion-item">
-          <h2 class="accordion-header" id="q3">
+          <h2 class="accordion-header" id="headingThree">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#a3">Pracujete i o víkendu?</button>
+              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Pracujete i o víkendech nebo večer?
+            </button>
           </h2>
-          <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
-            <div class="accordion-body">Ano, o víkendech po předchozí domluvě.</div>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <strong>Ano</strong>, práce o víkendech nebo večer je možná po předchozí domluvě.
+              Kontaktujte mě prosím s předstihem, abychom si sjednali vhodný termín.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              Nosíte si vlastní nářadí a materiál?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Vždy si nosím vlastní profesionální nářadí.
+              Drobné materiály (hmoždinky, šrouby, těsnění) jsou zahrnuté v ceně.
+              Větší nebo speciální díly mohu zajistit já, nebo je můžete dodat sami.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+              Které lokality obsluhujete?
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Nejčastěji pracuji v <strong>Praze a okolí</strong>.
+              U zakázek mimo tuto oblast se může účtovat drobný příplatek za dopravu.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              Poskytujete záruku na práci?
+            </button>
+          </h2>
+          <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Ano, za svou práci ručím.
+              Pokud se v přiměřené době objeví problém, přijedu ho bezplatně odstranit.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+              Jaké práce neděláte?
+            </button>
+          </h2>
+          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              Neprovádím <strong>složité elektroinstalace, plynařské práce ani rozsáhlé instalatérské zásahy</strong>.
+              Tyto činnosti je nutné svěřit licencovaným odborníkům.
+              Mohu ale pomoci s drobnými souvisejícími úkony a doporučit spolehlivé specialisty.
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- CONTACT (bez formuláře) -->
-  <section id="contact" class="py-5 bg-primary text-white">
-    <div class="container text-center">
+  <section id="contact" class="py-5 bg-warning text-bg-dark">
+    <div class="container text-center bg-dark p-4 rounded shadow">
       <h2>Kontakt</h2>
       <p class="lead">Rychlý kontakt — zavolejte pro domluvu termínu</p>
       <div class="fs-4 fw-bold">
@@ -346,51 +509,52 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-3 text-center">
+  <footer class="py-4 bg-dark text-center text-white">
     <div class="container">
-      <small class="text-muted">&copy; <span id="year"></span> Hodinový manžel — Všechna práva vyhrazena. • Tento web je
-        prezentační vizitka (bez formulářů). Zde nepouzivame zadnan data klientu z duvodu cyber security.
-      </small>
+      <p class="mb-3 fs-5 fw-bold">© <span id="year"></span> Hodinový Manžel</p>
 
-      <div class="container text-center">
-        <p class="mb-2">© 2025 Hodinový Manžel – Všechna práva vyhrazena</p>
-        <div class="social-icons">
-          <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
-          <a href="#" class="text-light me-3"><i class="fab fa-linkedin fa-lg"></i></a>
-          <a href="#" class="text-light"><i class="fab fa-youtube fa-lg"></i></a>
-          <small class="text-muted">&copy; <span id="year"></span> Hodinový manžel — Všechna práva vyhrazena. • Tento
-            web je prezentační vizitka (bez formulářů). Zde nepouzivame zadnan data klientu z duvodu cyber security.
-          </small>
-        </div>
+      <div class="social-icons mb-3">
+        <a href="https://www.facebook.com/antonin.petnik" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/_antony_5/" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/anton%C3%ADn-p%C4%9Btn%C3%ADk-872a8b208/" class="text-white me-3"><i
+            class="bi bi-linkedin"></i></a>
+        <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
       </div>
+
+      <small class="text-muted d-block">
+        Tento web je prezentační vizitka (bez formulářů).
+        Nezpracováváme osobní údaje klientů z důvodu kybernetické bezpečnosti.
+      </small>
+    </div>
   </footer>
 
+
   <script>
-    // Dynamicky aktualizovat rok ve footeru
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script>
-    // Plynulý scroll pro kotvy v navigaci
-    document.querySelectorAll('.nav-link').forEach(anchor => {
+    // Dynamically update year in footer (guarded)
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Smooth scroll for site anchors: use the actual nav link class
+    document.querySelectorAll('.navbar__link').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
-  </script>
-  <script>
-    // Změna barvy navigačního menu při scrollování
+
+    // Header color change on scroll: use bg-warning as default
     window.addEventListener('scroll', function () {
       const header = document.querySelector('header');
+      if (!header) return;
       if (window.scrollY > 50) {
         header.classList.add('bg-dark', 'shadow-lg');
-        header.classList.remove('bg-primary');
+        header.classList.remove('bg-warning');
       } else {
         header.classList.remove('bg-dark', 'shadow-lg');
-        header.classList.add('bg-primary');
+        header.classList.add('bg-warning');
       }
     });
   </script>
