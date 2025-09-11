@@ -23,55 +23,10 @@
   <!-- Bootstrap bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Vlastní JS -->
-  <script defer src="sidebar_responsive.js"></script>
+  <script defer src="js/sidebar_responsive.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
 
-  <script>
-    // Safe logo animation: target the img inside the navbar brand figure if anime is loaded
-    if (typeof anime !== 'undefined') {
-      const logoImg = document.querySelector('.navbar__brand figure img');
-      if (logoImg) {
-        anime({
-          targets: logoImg,
-          rotate: '1turn',
-          duration: 2000,
-          easing: 'easeInOutSine'
-        });
-      }
-    }
-  </script>
-  <script>
-    // about-photo overlay: ensure keyboard users can reveal overlay and icons stagger
-    (function () {
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      document.querySelectorAll('.about-photo').forEach(el => {
-        // make sure the overlay is aria-hidden when not active
-        const overlay = el.querySelector('.about-photo__overlay');
-        if (!overlay) return;
-        overlay.setAttribute('aria-hidden', 'true');
-
-        function show() {
-          overlay.setAttribute('aria-hidden', 'false');
-          if (!reduced) {
-            // trigger reflow then add active class to let CSS transitions stagger
-            overlay.querySelectorAll('.about-photo__social').forEach((btn, i) => {
-              btn.style.transitionDelay = (60 * (i + 1)) + 'ms';
-            });
-          }
-        }
-
-        function hide() {
-          overlay.setAttribute('aria-hidden', 'true');
-          overlay.querySelectorAll('.about-photo__social').forEach(btn => btn.style.transitionDelay = '0ms');
-        }
-
-        el.addEventListener('mouseenter', show);
-        el.addEventListener('focusin', show);
-        el.addEventListener('mouseleave', hide);
-        el.addEventListener('focusout', hide);
-      });
-    })();
-  </script>
+  <!-- Inline scripts moved to external files for maintainability -->
 </head>
 
 <body>
@@ -85,6 +40,9 @@
         <a href="index.html">CZ</a> |
         <a href="index-eng.html">ENG</a>
       </div>
+      <!-- Theme toggle placed in header for visibility -->
+      <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
+        aria-label="Toggle theme">🌙</div>
       <nav class="navbar container navbar-expand-lg rounded shadow-lg">
         <div class="navbar__brand">
           <a href="#hero" class="text-2xl font-bold" aria-label="Home">
@@ -109,6 +67,7 @@
           <li><a href="#contact" class="navbar__link">Kontakt</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
@@ -118,8 +77,8 @@
     <div class="hero__bg" aria-hidden="true" style="background-image: url('Img/Firefly_professional_handyman.jpg');">
     </div>
     <div class="container text-center py-5 large grid centered square-grid">
-      <h1 class="display-1 fw-bold text-xl">Hodinový manžel, práce kolem domova</h1>
-      <p class="lead mb-4 fw-medium">Práce kolem domova. Montáže polic, montáž nábytku, výměna svítidel, drobné opravy a
+      <h1 class="display-1 fw-bold text-xl">Hodinový manžel, práce kolem domu</h1>
+      <p class="lead mb-4 fw-medium">Práce kolem domu. Montáže polic, montáž nábytku, výměna svítidel, drobné opravy a
         vše, co zvládne zkušený
         pomocník.</p>
 
@@ -143,7 +102,7 @@
 
       <div class="row g-4">
         <div class="col-md-4">
-          <div class="card h-100 service-card flip-card" tabindex="0">
+          <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
             <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
               <!-- info icon -->
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -169,7 +128,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card flip-card" tabindex="0">
+          <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
             <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
@@ -195,7 +154,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card flip-card" tabindex="0">
+          <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
             <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
@@ -220,7 +179,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card flip-card" tabindex="0">
+          <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
             <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
@@ -245,7 +204,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card h-100 service-card flip-card" tabindex="0">
+          <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
             <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
@@ -269,7 +228,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card h-100 service-card flip-card" tabindex="0">
+          <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
             <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
@@ -294,18 +253,18 @@
         </div>
       </div>
 
-      <div class="mt-xl-5 text-center bg-dark border rounded p-3">
-        <small class="text-warning bg-transparent display-5">Pokud práce zahrnují složitou elektroinstalaci, práci na
+      <div class="mt-xl-5 text-center bg-dark border rounded p-3 warning-note bs-tooltip-top" data-bs-toggle="tooltip">
+        <p class="text-warning bg-transparent fw-bold fs-5">!!! Poku práce zahrnují složitou elektroinstalaci, práci na
           plynu
           nebo
           rozsáhlé
-          vodoinstalační zásahy, zajistíme konzultaci a doporučíme specialistu.</small>
+          vodoinstalační zásahy, zajistíme konzultaci a doporučíme specialistu. !!!</p>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="py-5 bg-light">
+  <section id="about" class="py-5 bg-dark text-white">
     <div class="container">
       <div class="row align-items-center g-4">
         <div class="col-md-4 text-center">
@@ -315,7 +274,7 @@
               <img src="Img/snowboarder.jpg" alt="Hodinový manžel" class="img-fluid rounded shadow about-photo__img">
             </a>
 
-            <div class="about-photo__overlay" aria-hidden="false">
+            <div class="about-photo__overlay" aria-hidden="true">
               <a class="about-photo__social" href="https://www.facebook.com/antonin.petnik" target="_blank"
                 rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
               <a class="about-photo__social" href="https://www.linkedin.com/in/anton%C3%ADn-p%C4%9Btn%C3%ADk-872a8b208/"
@@ -351,7 +310,7 @@
   </section>
 
   <!-- PORTFOLIO / UKÁZKY -->
-  <section id="portfolio" class="py-5">
+  <section id="portfolio" class="py-5 bg-dark text-white">
     <div class="container">
       <h2 class="mb-4 text-center">Ukázky dokončených prací</h2>
 
@@ -360,7 +319,7 @@
         <div class="col-sm-6 col-md-4">
           <div class="portfolio-item position-relative overflow-hidden">
             <img src="Img/Firefly_bakingPizza.jpg" alt="Montáž police" class="img-fluid w-100">
-            <div class="overlay p-3">
+            <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
               <h5>Budování pizza krbu</h5>
               <p class="small mb-0">Přesné kotvení a budovani podle termodinamiky zdiva.</p>
             </div>
@@ -370,7 +329,7 @@
         <div class="col-sm-6 col-md-4">
           <div class="portfolio-item position-relative overflow-hidden">
             <img src="Img/furniture.jpg" alt="Montáž nábytku" class="img-fluid w-100">
-            <div class="overlay p-3">
+            <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
               <h5>Montáž nábytku</h5>
               <p class="small mb-0">Sestavení a seřízení skříní.</p>
             </div>
@@ -380,208 +339,74 @@
         <div class="col-sm-6 col-md-4">
           <div class="portfolio-item position-relative overflow-hidden">
             <img src="Img/plumbers.jpg" alt="Výměna svítidla" class="img-fluid w-100">
-            <div class="overlay p-3">
+            <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
               <h5>Výměna syfonu</h5>
-              <p class="small mb-0">Výměna syfonu. Doporuceny servis.</p>
+              <p class="small mb-0">Výměna a utěsnění syfonu u umyvadla.</p>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="mb-4 text-center">Reference</h2>
-
-      <div id="testCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner text-center">
-          <div class="carousel-item active">
-            <blockquote class="blockquote">
-              <p class="mb-0">"Rychlé a čisté provedení. Pan Antonín Pětník mi přimontoval police během hodiny — skvělá
-                práce!"
-              </p>
-              <footer class="blockquote-footer m-2">Petra, Praha</footer>
-            </blockquote>
-          </div>
-          <div class="carousel-item">
-            <blockquote class="blockquote">
-              <p class="mb-0">"Montáž nábytku bez stresu. Vše perfektně složeno a připraveno k používání."</p>
-              <footer class="blockquote-footer m-2">Martin, Brno</footer>
-            </blockquote>
-          </div>
-          <div class="carousel-item">
-            <blockquote class="blockquote">
-              <p class="mb-0">"Montáž automonosynchronni spojky vysavace. Zkuseny pracovnik docilil uspechu i bez navodu
-                k oprave. Zde se odbornik prokazal, musim rict."</p>
-              <footer class="blockquote-footer m-2">Martin, Brno</footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="my-lg-5"></div>
-
-  <!-------------------  COUNTER  ----------------    -->
-
-  <section id="stats" class="py-5 bg-light text-center">
-    <div class="container">
-      <div class="row g-4">
-
-        <div class="col-md-6">
-          <div class="p-4 border rounded shadow-sm bg-white">
-            <h2 class="counter display-4 fw-bold" data-target="1250">0</h2>
-            <p class="mb-0">Návštěvníků webu</p>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="p-4 border rounded shadow-sm bg-white">
-            <h2 class="counter display-4 fw-bold" data-target="320">0</h2>
-            <p class="mb-0">Hotových zakázek</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- FAQ -->
-  <!-- FAQ -->
-  <section id="faq" class="py-5">
-    <div class="container">
+  <section class="py-5 bg-warning text-dark">
+    <div class="container py-5">
       <h2 class="mb-4 text-center">Často kladené otázky</h2>
-      <hr class="mb-4">
-
-      <div class="accordion mt-5" id="accordionExample">
-        <!-- Q1 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
-              Jak rychle můžete přijet?
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              Obvykle reaguji do <strong>24 hodin</strong>.
-              V naléhavých případech mi prosím zavolejte přímo a pokusím se domluvit návštěvu ještě tentýž den.
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <!-- Replaced accordion Q4–Q7 with a carousel -->
+          <div id="faqMiniCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3200"
+            data-bs-pause="hover" data-bs-wrap="true" aria-label="FAQ mini carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Nosíte si vlastní nářadí a materiál?"></button>
+              <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="1"
+                aria-label="Které lokality obsluhujete?"></button>
+              <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="2"
+                aria-label="Poskytujete záruku na práci?"></button>
+              <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="3"
+                aria-label="Jaké práce neděláte?"></button>
             </div>
-          </div>
-        </div>
 
-        <!-- Q2 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Jak u vás probíhá platba?
-            </button>
-          </h2>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              Nejčastější způsob je <strong>hotově na místě</strong>.
-              Je také možné zaplatit převodem na účet po předchozí domluvě.
-              U větších zakázek mohu požadovat malou zálohu na materiál.
-            </div>
-          </div>
-        </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="p-3 bg-dark text-white rounded">
+                  <h5>Nosíte si vlastní nářadí a materiál?</h5>
+                  <p>Vždy si nosím vlastní profesionální nářadí. Drobné materiály (hmoždinky, šrouby, těsnění) jsou
+                    zahrnuté v ceně. Větší nebo speciální díly mohu zajistit já, nebo je můžete dodat sami.</p>
+                </div>
+              </div>
 
-        <!-- Q3 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Pracujete i o víkendech nebo večer?
-            </button>
-          </h2>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <strong>Ano</strong>, práce o víkendech nebo večer je možná po předchozí domluvě.
-              Kontaktujte mě prosím s předstihem, abychom si sjednali vhodný termín.
-            </div>
-          </div>
-        </div>
+              <div class="carousel-item">
+                <div class="p-3 bg-dark text-white rounded">
+                  <h5>Které lokality obsluhujete?</h5>
+                  <p>Nejčastěji pracuji v <strong>Praze a okolí</strong>. U zakázek mimo tuto oblast se může účtovat
+                    drobný příplatek za dopravu.</p>
+                </div>
+              </div>
 
-        <!-- Q4 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              Nosíte si vlastní nářadí a materiál?
-            </button>
-          </h2>
-          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              Vždy si nosím vlastní profesionální nářadí.
-              Drobné materiály (hmoždinky, šrouby, těsnění) jsou zahrnuté v ceně.
-              Větší nebo speciální díly mohu zajistit já, nebo je můžete dodat sami.
-            </div>
-          </div>
-        </div>
+              <div class="carousel-item">
+                <div class="p-3 bg-dark text-white rounded">
+                  <h5>Poskytujete záruku na práci?</h5>
+                  <p>Ano, za svou práci ručím. Pokud se v přiměřené době objeví problém, přijedu ho bezplatně odstranit.
+                  </p>
+                </div>
+              </div>
 
-        <!-- Q5 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingFive">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-              Které lokality obsluhujete?
-            </button>
-          </h2>
-          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              Nejčastěji pracuji v <strong>Praze a okolí</strong>.
-              U zakázek mimo tuto oblast se může účtovat drobný příplatek za dopravu.
+              <div class="carousel-item">
+                <div class="p-3 bg-dark text-white rounded">
+                  <h5>Jaké práce neděláte?</h5>
+                  <p>Neprovádím <strong>složité elektroinstalace, plynařské práce ani rozsáhlé instalatérské
+                      zásahy</strong>. Tyto činnosti je nutné svěřit licencovaným odborníkům. Mohu ale pomoci s drobnými
+                    souvisejícími úkony a doporučit spolehlivé specialisty.</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Q6 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingSix">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-              Poskytujete záruku na práci?
-            </button>
-          </h2>
-          <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              Ano, za svou práci ručím.
-              Pokud se v přiměřené době objeví problém, přijedu ho bezplatně odstranit.
-            </div>
-          </div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingSeven">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-              Jaké práce neděláte?
-            </button>
-          </h2>
-          <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              Neprovádím <strong>složité elektroinstalace, plynařské práce ani rozsáhlé instalatérské zásahy</strong>.
-              Tyto činnosti je nutné svěřit licencovaným odborníkům.
-              Mohu ale pomoci s drobnými souvisejícími úkony a doporučit spolehlivé specialisty.
-            </div>
+            <!-- Controls removed: carousel is automatic with indicators only -->
           </div>
         </div>
       </div>
-    </div>
   </section>
 
 
@@ -619,200 +444,19 @@
       </small>
     </div>
   </footer>
-
-
-  <script>
-    // Dynamically update year in footer (guarded)
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Smooth scroll for site anchors: use the actual nav link class
-    document.querySelectorAll('.navbar__link').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    // Header color change on scroll: use bg-warning as default
-    window.addEventListener('scroll', function () {
-      const header = document.querySelector('header');
-      if (!header) return;
-      if (window.scrollY > 50) {
-        header.classList.add('bg-dark', 'shadow-lg');
-        header.classList.remove('bg-warning');
-      } else {
-        header.classList.remove('bg-dark', 'shadow-lg');
-        header.classList.add('bg-warning');
-      }
-    });
-  </script>
-  <script>
-    // Small parallax effect: mousemove + scroll driven, lightweight and defensive
-    (function () {
-      const hero = document.querySelector('.parallax-hero');
-      const bg = document.querySelector('.parallax-hero .hero__bg');
-      if (!hero || !bg) return;
-
-      let mouseX = 0, mouseY = 0;
-      let lastX = 0, lastY = 0;
-      let rafId = null;
-
-      function update() {
-        // subtle parallax offsets from pointer movement
-        const dx = (mouseX - lastX) * 0.06;
-        const dy = (mouseY - lastY) * 0.06;
-        lastX += dx;
-        lastY += dy;
-
-        // stronger but clamped scroll parallax so image moves on scroll
-        const maxScrollOffset = Math.min(window.scrollY, hero.clientHeight);
-        // increase multiplier so scroll can move the background by ~100px at full hero scroll
-        const scrollFactor = (maxScrollOffset / hero.clientHeight) * 120; // up to ~120px vertical shift
-
-        // clamp jitter and allow larger vertical movement
-        const finalX = Math.max(-30, Math.min(30, lastX));
-        const finalY = Math.max(-120, Math.min(140, lastY + scrollFactor));
-
-        // increase scale base and add a small dynamic scale based on scrollFactor to avoid seeing image edges
-        const dynamicScale = 1.1 + Math.min(0.06, (scrollFactor / 120) * 0.06); // 1.1 .. ~1.16
-        bg.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) scale(${dynamicScale.toFixed(3)})`;
-
-        // dynamic filter: increase blur and slightly desaturate as we scroll
-        const blurPx = Math.min(6, (maxScrollOffset / hero.clientHeight) * 6); // up to 6px blur
-        const sat = Math.max(0.6, 1 - (maxScrollOffset / hero.clientHeight) * 0.25); // down to 0.75
-        const bright = Math.max(0.85, 1 - (maxScrollOffset / hero.clientHeight) * 0.12);
-        const filterValue = `saturate(${sat}) contrast(1) brightness(${bright}) blur(${blurPx}px)`;
-        bg.style.setProperty('--hero-filter', filterValue);
-
-        rafId = requestAnimationFrame(update);
-      }
-
-      function onMove(e) {
-        const rect = hero.getBoundingClientRect();
-        mouseX = (e.clientX - rect.left - rect.width / 2) * -0.02; // invert
-        mouseY = (e.clientY - rect.top - rect.height / 2) * -0.02;
-        if (!rafId) update();
-      }
-
-      // handle touch: use center point
-      function onTouch(e) {
-        if (!e.touches || !e.touches.length) return;
-        onMove(e.touches[0]);
-      }
-
-      hero.addEventListener('mousemove', onMove);
-      hero.addEventListener('touchmove', onTouch, { passive: true });
-      window.addEventListener('scroll', () => { if (!rafId) update(); });
-    })();
-  </script>
-  <script>
-    // Animace číselných ukazatelů  
-
-    $(document).ready(function () {
-      let countersStarted = false;
-
-      function animateCounters() {
-        $('.counter').each(function () {
-          let $this = $(this);
-          let target = +$this.attr('data-target');
-          let count = 0;
-          let step = target / 200; // rychlost animace
-
-          let interval = setInterval(function () {
-            count += step;
-            if (count >= target) {
-              count = target;
-              clearInterval(interval);
-            }
-            $this.text(Math.floor(count));
-          }, 10);
-        });
-      }
-
-      // Spuštění animace až když je sekce vidět
-      $(window).on('scroll', function () {
-        let statsTop = $('#stats').offset().top - window.innerHeight + 100;
-        if (!countersStarted && $(window).scrollTop() > statsTop) {
-          animateCounters();
-          countersStarted = true;
-        }
-      });
-    });
-  </script>
-
-  <script>
-    // Wire up flip-card toggle buttons for touch devices
-    (function () {
-      document.querySelectorAll('.flip-card__toggle').forEach(btn => {
-        btn.addEventListener('click', function (e) {
-          e.stopPropagation();
-          const card = btn.closest('.flip-card');
-          if (!card) return;
-          const isFlipped = card.classList.toggle('is-flipped');
-          btn.setAttribute('aria-expanded', isFlipped ? 'true' : 'false');
-        });
-      });
-
-      // Close flipped cards when clicking outside
-      document.addEventListener('click', function (e) {
-        document.querySelectorAll('.flip-card.is-flipped').forEach(c => {
-          if (!c.contains(e.target)) {
-            c.classList.remove('is-flipped');
-            const t = c.querySelector('.flip-card__toggle');
-            if (t) t.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
-
-      // Prevent propagation when clicking inside card (so outside click doesn't immediately close)
-      document.querySelectorAll('.flip-card').forEach(c => c.addEventListener('click', e => e.stopPropagation()));
-    })();
-  </script>
-  <!-- Theme toggle button -->
-  <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme"
-    style="position:fixed;right:1rem;bottom:1rem;z-index:1200;border:none;background:none;padding:0;">
-    <svg id="theme-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="5" fill="var(--primary)" />
-    </svg>
-  </button>
-
-  <script>
-    (function () {
-      const root = document.documentElement;
-      const toggle = document.getElementById('theme-toggle');
-      const icon = document.getElementById('theme-icon');
-      const LS_KEY = 'hm_theme';
-
-      function applyTheme(dark) {
-        if (dark) root.classList.add('dark-theme'); else root.classList.remove('dark-theme');
-        // simple icon swap: circle for sun, crescent for moon
-        if (icon) {
-          if (dark) {
-            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="var(--primary)"/>';
-          } else {
-            icon.innerHTML = '<circle cx="12" cy="12" r="5" fill="var(--primary)" />';
-          }
-        }
-      }
-
-      // init from localStorage
-      const stored = localStorage.getItem(LS_KEY);
-      const darkInit = stored === 'dark' || (stored === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      applyTheme(darkInit);
-
-      toggle.addEventListener('click', function () {
-        const isDark = root.classList.toggle('dark-theme');
-        localStorage.setItem(LS_KEY, isDark ? 'dark' : 'light');
-        applyTheme(isDark);
-      });
-    })();
-  </script>
+  <!-- Local scripts (deferred) -->
+  <!-- theme toggle moved to header -->
 
 
 </body>
+<!-- Load anime.js before logo-anim.js to ensure availability -->
+<script defer src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+<script defer src="js/logo-anim.js"></script>
+<script defer src="js/about-overlay.js"></script>
+<script defer src="js/parallax-hero.js"></script>
+<script defer src="js/counters.js"></script>
+<script defer src="js/flip-cards.js"></script>
+<script defer src="js/site-utils.js"></script>
+<script defer src="js/theme-toggle.js"></script>
 
 </html>
