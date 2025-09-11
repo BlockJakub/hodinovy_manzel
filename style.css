@@ -3,13 +3,38 @@
 :root {
   --primary: #0d6efd;
   --muted: #6c757d;
-  --hero-overlay: linear-gradient(120deg, #0d6efd66, #0dcaf066);
+  /* translucent overlay so the background image remains visible */
+  --hero-overlay: linear-gradient(120deg, rgba(13, 110, 253, 0.22), rgba(13, 202, 240, 0.18));
+  /* subtle gradient behind cards (light theme) */
+  --card-gradient: linear-gradient(135deg, rgba(13, 110, 253, 0.06), rgba(13, 202, 240, 0.03));
+  /* Theme variables - light (default) */
+  --bg: #f8f9fa;
+  --surface: #f6f7fb;
+  --text: #0d2b3a;
+  --muted-text: #6c757d;
+  --shadow-light: rgba(255, 255, 255, 0.9);
+  --shadow-dark: rgba(15, 23, 42, 0.08);
+  --neumo-offset: 8px;
+}
+
+/* Dark theme variables */
+:root.dark-theme {
+  --bg: #0b1220;
+  --surface: #0f1724;
+  --text: #e6eef8;
+  --muted-text: #9aa6b2;
+  --shadow-light: rgba(255, 255, 255, 0.03);
+  --shadow-dark: rgba(0, 0, 0, 0.6);
+  --neumo-offset: 6px;
+  /* darker, subtle card gradient for dark theme */
+  --card-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.10));
 }
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #f8f9fa;
+  background: var(--bg);
+  color: var(--text);
 }
 
 header {
@@ -160,12 +185,89 @@ header {
 }
 
 /* Hero */
-/* Hero area: use a sane min-height and correct calc (removed double-negative) */
+/* Full-viewport hero so image subject is visible; header is sticky so keep content padded if needed */
 #hero {
+  width: 100%;
+  height: 100vh;
   background-size: cover;
   background-position: center;
+  /* focus slightly higher so heads are visible */
   position: relative;
-  min-height: calc(100vh - 156px);
+  min-height: 100vh;
+  /* occupy full viewport */
+  display: flex;
+  align-items: center;
+}
+
+/* Parallax hero background layer */
+.parallax-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-hero .hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  /* keep focus toward top but avoid fractional offsets */
+  background-repeat: no-repeat;
+  /* bias toward top of image so faces are visible */
+  transform: translateZ(0);
+  will-change: transform;
+  transform-origin: center center;
+  /* scale from center to avoid exposing edges */
+  z-index: 0;
+  /* base filter - can be overridden by JS for dynamic scroll filter */
+  --hero-filter: saturate(1) contrast(1) brightness(.95) blur(0px);
+  filter: var(--hero-filter);
+}
+
+.parallax-hero .hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  /* overlay to improve text contrast */
+  z-index: 1;
+  pointer-events: none;
+  /* allow clicks through overlay */
+}
+
+.parallax-hero>.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure hero content has breathing room on small screens */
+.parallax-hero .container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Make sure the hero heading isn't too large on small devices */
+@media (max-width: 576px) {
+  #hero h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Neumorphism for card fronts */
+.flip-card__front {
+  background: var(--surface);
+  /* subtle light surface - neumorphic */
+  box-shadow: var(--neumo-offset) var(--neumo-offset) 16px var(--shadow-dark),
+    calc(var(--neumo-offset) * -1) calc(var(--neumo-offset) * -1) 16px var(--shadow-light);
+  border-radius: 12px;
+}
+
+/* Glassmorphism for card backs */
+.flip-card__back {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* Services cards animation */
@@ -192,6 +294,21 @@ header {
   /* ensures card contributes to layout and prevents overlap */
   margin-bottom: 1rem;
   /* breathing room when flipped */
+}
+
+/* Decorative gradient layer behind each card (theme-aware). Uses a pseudo-element so
+   the gradient doesn't interfere with the flipping faces. Kept subtle to preserve
+   neumorphic / glassmorphic surfaces above it. */
+.flip-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--card-gradient);
+  border-radius: 12px;
+  pointer-events: none;
+  /* slight inward inset so the gradient doesn't touch card edges too strongly */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .flip-card__inner {
@@ -225,7 +342,7 @@ header {
 
 .flip-card__back {
   transform: rotateY(180deg);
-  background: linear-gradient(180deg, #0d6efd11, #0dcaf022);
+  background: linear-gradient(180deg, #6a6a6b11, #f7e60422);
   color: #0d2b3a;
 }
 
@@ -234,6 +351,139 @@ header {
 .flip-card:focus-within .flip-card__inner,
 .flip-card.nav-open .flip-card__inner {
   transform: rotateY(180deg);
+}
+
+/* When toggled via button on touch devices */
+.flip-card.is-flipped .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* Toggle button (top-right corner) */
+.flip-card__toggle {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 6px rgba(10, 10, 20, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+}
+
+.flip-card__toggle:active {
+  transform: scale(.98);
+}
+
+.flip-card__toggle svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  fill: #0d2b3a;
+}
+
+/* About photo + social overlay */
+.about-photo {
+  display: inline-block;
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.about-photo__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 450ms cubic-bezier(.2, .9, .2, 1);
+  will-change: transform;
+}
+
+.about-photo__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.45));
+  transform: translateY(12%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 420ms cubic-bezier(.2, .9, .2, 1), opacity 320ms ease;
+}
+
+.about-photo:focus-within .about-photo__overlay,
+.about-photo:hover .about-photo__overlay {
+  transform: translateY(0%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.about-photo:focus-within .about-photo__img,
+.about-photo:hover .about-photo__img {
+  transform: scale(1.03) rotate(-1deg);
+}
+
+.about-photo__social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: white;
+  background: rgba(0, 0, 0, 0.55);
+  text-decoration: none;
+  transform: translateY(10px) scale(.9);
+  opacity: 0;
+  transition: transform 360ms cubic-bezier(.2, .9, .2, 1), opacity 300ms ease, background 200ms ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.about-photo__social:hover,
+.about-photo__social:focus {
+  background: var(--primary);
+  transform: translateY(0) scale(1);
+  outline: none;
+}
+
+/* Stagger children entrance */
+.about-photo__overlay .about-photo__social:nth-child(1) {
+  transition-delay: 60ms;
+}
+
+.about-photo__overlay .about-photo__social:nth-child(2) {
+  transition-delay: 120ms;
+}
+
+.about-photo__overlay .about-photo__social:nth-child(3) {
+  transition-delay: 180ms;
+}
+
+.about-photo__overlay .about-photo__social:nth-child(4) {
+  transition-delay: 240ms;
+}
+
+/* When overlay is active, animate icons in */
+.about-photo:focus-within .about-photo__social,
+.about-photo:hover .about-photo__social {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .about-photo__img,
+  .about-photo__overlay,
+  .about-photo__social {
+    transition: none !important;
+  }
 }
 
 .flip-card .back-inner {
@@ -285,6 +535,52 @@ header {
 /* Testimonials */
 .carousel .blockquote {
   font-size: 1rem;
+}
+
+/* Contact card hover: subtle pop-out and rise */
+#contact .container {
+  transition: transform 260ms cubic-bezier(.2, .9, .2, 1), box-shadow 260ms cubic-bezier(.2, .9, .2, 1);
+  will-change: transform, box-shadow;
+}
+
+/* Lift and stronger shadow on hover (desktop) */
+@media (hover: hover) {
+  #contact .container:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.28);
+  }
+}
+
+/* Services end-note: subtle lift + color change on hover (only on devices that support hover) */
+@media (hover: hover) {
+
+  /* target the specific block in #services so we don't affect other .mt-4 utilities */
+  #services .mt-4.text-center.bg-dark.border.rounded.p-3 {
+    transition: transform 260ms cubic-bezier(.2, .9, .2, 1), background-color 260ms ease;
+    will-change: transform, background-color;
+    transform: translateY(0);
+    /* ensure the block has a consistent background layering for the transition */
+    background-color: rgba(0, 0, 0, 0.72);
+  }
+
+  #services .mt-4.text-center.bg-dark.border.rounded.p-3 small {
+    transition: color 260ms ease, opacity 260ms ease;
+    /* keep the original warning color visually until hover */
+    color: var(--muted-text);
+    opacity: 0.95;
+  }
+
+  #services .mt-4.text-center.bg-dark.border.rounded.p-3:hover {
+    transform: translateY(-10px);
+    background-color: rgba(13, 110, 253, 0.92);
+    /* bluish accent on hover */
+  }
+
+  #services .mt-4.text-center.bg-dark.border.rounded.p-3:hover small {
+    color: #fff;
+    /* change font color on hover */
+    opacity: 1;
+  }
 }
 
 /* Fix: selector should target the accordion item class */
