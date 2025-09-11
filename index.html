@@ -30,9 +30,10 @@
 </head>
 
 <body>
-
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="visually-hidden-focusable skip-link">Přeskočit na hlavní obsah</a>
   <!-- HEADER / NAV -->
-  <header class="bg-warning text-white sticky-top shadow-sm">
+  <header class="bg-warning sticky-top shadow-sm">
 
 
     <div class="container">
@@ -47,8 +48,8 @@
         <div class="navbar__brand">
           <a href="#hero" class="text-2xl font-bold" aria-label="Home">
             <!-- Replaced non-standard <logo> tag with a standard figure for accessibility -->
-            <figure class="m-0"><img src="Img/logo_handy_man.jpg" width="96" height="96" alt="Hodinový manžel logo"
-                class="d-inline-block"></figure>
+            <figure class="m-0 logo"><img src="Img/logo_handy_man_transbg.svg" width="126" height="126"
+                alt="Hodinový manžel logo" class="d-inline-block"></figure>
           </a>
         </div>
 
@@ -72,7 +73,7 @@
   </header>
 
   <!-- HERO -->
-  <section id="hero" class="text-white d-flex align-items-center parallax-hero" style="min-height:70vh;">
+  <section id="hero" class="text-white d-flex align-items-center parallax-hero mt-5 mb-5" style="min-height:70vh;">
     <!-- Parallax background layer — moved out of inline style so JS can animate it -->
     <div class="hero__bg" aria-hidden="true" style="background-image: url('Img/Firefly_professional_handyman.jpg');">
     </div>
@@ -98,9 +99,9 @@
   <!-- SERVICES -->
   <section id="services" class="py-5 bg-warning">
     <div class="container">
-      <h2 class="mb-4 text-center fs-3">Co pro vás udělám</h2>
+      <h2 class="mb-5 text-center text-muted">Co pro vás udělám</h2>
 
-      <div class="row g-4">
+      <div class="row g-4 mt-5">
         <div class="col-md-4">
           <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
             <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
@@ -254,7 +255,8 @@
       </div>
 
       <div class="mt-xl-5 text-center bg-dark border rounded p-3 warning-note bs-tooltip-top" data-bs-toggle="tooltip">
-        <p class="text-warning bg-transparent fw-bold fs-5">!!! Poku práce zahrnují složitou elektroinstalaci, práci na
+        <p class="text-warning bg-transparent fw-bold warning-animate">!!! Poku práce zahrnují složitou
+          elektroinstalaci, práci na
           plynu
           nebo
           rozsáhlé
@@ -304,6 +306,10 @@
             <!-- pokud chcete mail, ale pozor na spam -->
             <a href="mailto:hodinovymanzel@example.com" class="btn btn-outline-primary">Email</a>
           </div>
+          <div class=" text-center" aria-hidden="true">
+            <a href="#" class="d-block" aria-hidden="true"><img src="Img/logo_handy_man_transbg.svg" width="148"
+                height="148" alt="Hodinový manžel logo" class="d-inline-block"></a>
+          </div>
         </div>
       </div>
     </div>
@@ -312,7 +318,7 @@
   <!-- PORTFOLIO / UKÁZKY -->
   <section id="portfolio" class="py-5 bg-dark text-white">
     <div class="container">
-      <h2 class="mb-4 text-center">Ukázky dokončených prací</h2>
+      <h2 class="mb-5 text-center">Ukázky dokončených prací</h2>
 
       <div class="row g-3">
         <!-- Každý obrázek nahraď reálnými fotkami v /img/ -->
@@ -351,13 +357,13 @@
 
   <section class="py-5 bg-warning text-dark">
     <div class="container py-5">
-      <h2 class="mb-4 text-center">Často kladené otázky</h2>
+      <h2 class="mb-4 text-center mb-5">Často kladené otázky</h2>
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <!-- Replaced accordion Q4–Q7 with a carousel -->
           <div id="faqMiniCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3200"
             data-bs-pause="hover" data-bs-wrap="true" aria-label="FAQ mini carousel">
-            <div class="carousel-indicators">
+            <div class="carousel-indicators mb-1">
               <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Nosíte si vlastní nářadí a materiál?"></button>
               <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="1"
@@ -372,6 +378,8 @@
               <div class="carousel-item active">
                 <div class="p-3 bg-dark text-white rounded">
                   <h5>Nosíte si vlastní nářadí a materiál?</h5>
+                  <br>
+                  <hr>
                   <p>Vždy si nosím vlastní profesionální nářadí. Drobné materiály (hmoždinky, šrouby, těsnění) jsou
                     zahrnuté v ceně. Větší nebo speciální díly mohu zajistit já, nebo je můžete dodat sami.</p>
                 </div>
@@ -380,6 +388,8 @@
               <div class="carousel-item">
                 <div class="p-3 bg-dark text-white rounded">
                   <h5>Které lokality obsluhujete?</h5>
+                  <br>
+                  <hr>
                   <p>Nejčastěji pracuji v <strong>Praze a okolí</strong>. U zakázek mimo tuto oblast se může účtovat
                     drobný příplatek za dopravu.</p>
                 </div>
@@ -438,10 +448,22 @@
         <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
       </div>
 
+      <div class="logo">
+        <a href="#" class="d-block" aria-hidden="true"><img src="Img/logo_handy_man_transbg.svg" width="96" height="96"
+            alt="Hodinový manžel logo" class="d-inline-block"></a>
+
+      </div>
+
       <small class="text-muted d-block">
         Tento web je prezentační vizitka (bez formulářů).
         Nezpracováváme osobní údaje klientů z důvodu kybernetické bezpečnosti.
       </small>
+      <nav class=" footer-nav mt-3" aria-label="Právní a informační stránky">
+        <a href="terms.html" class="text-decoration-none text-secondary mx-2">Obchodní podmínky</a>|
+        <a href="privacy.html" class="text-decoration-none text-secondary mx-2">Ochrana osobních údajů</a>|
+        <a href="copyright.html" class="text-decoration-none text-secondary mx-2">Autorská práva</a>|
+        <a href="imprint.html" class="text-decoration-none text-secondary mx-2">Imprint & Kontakt</a>|
+      </nav>
     </div>
   </footer>
   <!-- Local scripts (deferred) -->
@@ -450,6 +472,13 @@
 
 </body>
 <!-- Load anime.js before logo-anim.js to ensure availability -->
+<script>
+  // Redirect to 500.html on uncaught JavaScript errors
+  window.onerror = function (message, source, lineno, colno, error) {
+    window.location.href = "500.html";
+    return true;
+  };
+</script>
 <script defer src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
 <script defer src="js/logo-anim.js"></script>
 <script defer src="js/about-overlay.js"></script>
