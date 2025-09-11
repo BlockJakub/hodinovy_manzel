@@ -40,6 +40,38 @@
       }
     }
   </script>
+  <script>
+    // about-photo overlay: ensure keyboard users can reveal overlay and icons stagger
+    (function () {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.about-photo').forEach(el => {
+        // make sure the overlay is aria-hidden when not active
+        const overlay = el.querySelector('.about-photo__overlay');
+        if (!overlay) return;
+        overlay.setAttribute('aria-hidden', 'true');
+
+        function show() {
+          overlay.setAttribute('aria-hidden', 'false');
+          if (!reduced) {
+            // trigger reflow then add active class to let CSS transitions stagger
+            overlay.querySelectorAll('.about-photo__social').forEach((btn, i) => {
+              btn.style.transitionDelay = (60 * (i + 1)) + 'ms';
+            });
+          }
+        }
+
+        function hide() {
+          overlay.setAttribute('aria-hidden', 'true');
+          overlay.querySelectorAll('.about-photo__social').forEach(btn => btn.style.transitionDelay = '0ms');
+        }
+
+        el.addEventListener('mouseenter', show);
+        el.addEventListener('focusin', show);
+        el.addEventListener('mouseleave', hide);
+        el.addEventListener('focusout', hide);
+      });
+    })();
+  </script>
 </head>
 
 <body>
@@ -81,8 +113,10 @@
   </header>
 
   <!-- HERO -->
-  <section id="hero" class="text-white d-flex align-items-center"
-    style="min-height:70vh; background: linear-gradient(120deg,#0d6efd66,#0dcaf066), url('Img/Firefly_professional_handyman.jpg') center/cover no-repeat;">
+  <section id="hero" class="text-white d-flex align-items-center parallax-hero" style="min-height:70vh;">
+    <!-- Parallax background layer — moved out of inline style so JS can animate it -->
+    <div class="hero__bg" aria-hidden="true" style="background-image: url('Img/Firefly_professional_handyman.jpg');">
+    </div>
     <div class="container text-center py-5 large grid centered square-grid">
       <h1 class="display-1 fw-bold text-xl">Hodinový manžel, práce kolem domova</h1>
       <p class="lead mb-4 fw-medium">Práce kolem domova. Montáže polic, montáž nábytku, výměna svítidel, drobné opravy a
@@ -90,7 +124,11 @@
         pomocník.</p>
 
       <div class="d-flex justify-content-center gap-3">
-        <a href="tel:+420 603 861 311" class="btn btn-light btn-lg"><i class="bi bi-telephone"></i> Zavolat</a>
+        <!-- WhatsApp click-to-chat (opens in new tab) -->
+        <a href="https://wa.me/420603861311?text=Zdrav%C3%ADm%2C%20m%C3%A1m%20z%C3%A1jem%20o%20slu%C5%BEby"
+          target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg">
+          <i class="bi bi-whatsapp"></i> WhatsApp
+        </a>
         <a href="#services" class="btn btn-outline-light btn-lg">Naše služby</a>
       </div>
 
@@ -99,13 +137,20 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="py-5">
+  <section id="services" class="py-5 bg-warning">
     <div class="container">
       <h2 class="mb-4 text-center">Co pro vás udělám</h2>
 
       <div class="row g-4">
         <div class="col-md-4">
           <div class="card h-100 service-card flip-card" tabindex="0">
+            <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
+              <!-- info icon -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
+                </path>
+              </svg>
+            </button>
             <div class="flip-card__inner">
               <div class="flip-card__front card-body text-center">
                 <div class="icon mb-3"><i class="bi bi-hammer fs-1"></i></div>
@@ -125,6 +170,12 @@
 
         <div class="col-md-4">
           <div class="card h-100 service-card flip-card" tabindex="0">
+            <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
+                </path>
+              </svg>
+            </button>
             <div class="flip-card__inner">
               <div class="flip-card__front card-body text-center">
                 <div class="icon mb-3"><i class="bi bi-lightbulb fs-1"></i></div>
@@ -145,6 +196,12 @@
 
         <div class="col-md-4">
           <div class="card h-100 service-card flip-card" tabindex="0">
+            <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
+                </path>
+              </svg>
+            </button>
             <div class="flip-card__inner">
               <div class="flip-card__front card-body text-center">
                 <div class="icon mb-3"><i class="bi bi-box-seam fs-1"></i></div>
@@ -164,6 +221,12 @@
 
         <div class="col-md-4">
           <div class="card h-100 service-card flip-card" tabindex="0">
+            <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
+                </path>
+              </svg>
+            </button>
             <div class="flip-card__inner">
               <div class="flip-card__front card-body text-center">
                 <div class="icon mb-3"><i class="bi bi-tv fs-1"></i></div>
@@ -183,6 +246,12 @@
 
         <div class="col-md-4">
           <div class="card h-100 service-card flip-card" tabindex="0">
+            <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
+                </path>
+              </svg>
+            </button>
             <div class="flip-card__inner">
               <div class="flip-card__front card-body text-center">
                 <div class="icon mb-3"><i class="bi bi-droplet fs-1"></i></div>
@@ -199,9 +268,14 @@
             </div>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="card h-100 service-card flip-card" tabindex="0">
+            <button class="flip-card__toggle" aria-label="Zobrazit cenu a čas" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm.75 15h-1.5v-1.5h1.5V17zm0-3.75h-1.5v-6h1.5v6z">
+                </path>
+              </svg>
+            </button>
             <div class="flip-card__inner">
               <div class="flip-card__front card-body text-center">
                 <div class="icon mb-3"><i class="bi bi-wrench-adjustable fs-1"></i></div>
@@ -220,8 +294,11 @@
         </div>
       </div>
 
-      <div class="mt-4 text-center">
-        <small class="text-muted">Pokud práce zahrnují složitou elektroinstalaci, práci na plynu nebo rozsáhlé
+      <div class="mt-xl-5 text-center bg-dark border rounded p-3">
+        <small class="text-warning bg-transparent display-5">Pokud práce zahrnují složitou elektroinstalaci, práci na
+          plynu
+          nebo
+          rozsáhlé
           vodoinstalační zásahy, zajistíme konzultaci a doporučíme specialistu.</small>
       </div>
     </div>
@@ -232,8 +309,23 @@
     <div class="container">
       <div class="row align-items-center g-4">
         <div class="col-md-4 text-center">
-          <a href="https://www.facebook.com/antonin.petnik"><img src="Img/snowboarder.jpg" alt="Hodinový manžel"
-              class="img-fluid rounded shadow"></a>
+          <div class="about-photo" tabindex="0">
+            <a class="about-photo__link" href="https://www.facebook.com/antonin.petnik" target="_blank"
+              rel="noopener noreferrer" aria-label="Facebook">
+              <img src="Img/snowboarder.jpg" alt="Hodinový manžel" class="img-fluid rounded shadow about-photo__img">
+            </a>
+
+            <div class="about-photo__overlay" aria-hidden="false">
+              <a class="about-photo__social" href="https://www.facebook.com/antonin.petnik" target="_blank"
+                rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a class="about-photo__social" href="https://www.linkedin.com/in/anton%C3%ADn-p%C4%9Btn%C3%ADk-872a8b208/"
+                target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a class="about-photo__social" href="https://www.instagram.com/_antony_5/" target="_blank"
+                rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a class="about-photo__social" href="#" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i
+                  class="bi bi-youtube"></i></a>
+            </div>
+          </div>
         </div>
         <div class="col-md-8">
           <h2>O mně</h2>
@@ -559,6 +651,65 @@
     });
   </script>
   <script>
+    // Small parallax effect: mousemove + scroll driven, lightweight and defensive
+    (function () {
+      const hero = document.querySelector('.parallax-hero');
+      const bg = document.querySelector('.parallax-hero .hero__bg');
+      if (!hero || !bg) return;
+
+      let mouseX = 0, mouseY = 0;
+      let lastX = 0, lastY = 0;
+      let rafId = null;
+
+      function update() {
+        // subtle parallax offsets from pointer movement
+        const dx = (mouseX - lastX) * 0.06;
+        const dy = (mouseY - lastY) * 0.06;
+        lastX += dx;
+        lastY += dy;
+
+        // stronger but clamped scroll parallax so image moves on scroll
+        const maxScrollOffset = Math.min(window.scrollY, hero.clientHeight);
+        // increase multiplier so scroll can move the background by ~100px at full hero scroll
+        const scrollFactor = (maxScrollOffset / hero.clientHeight) * 120; // up to ~120px vertical shift
+
+        // clamp jitter and allow larger vertical movement
+        const finalX = Math.max(-30, Math.min(30, lastX));
+        const finalY = Math.max(-120, Math.min(140, lastY + scrollFactor));
+
+        // increase scale base and add a small dynamic scale based on scrollFactor to avoid seeing image edges
+        const dynamicScale = 1.1 + Math.min(0.06, (scrollFactor / 120) * 0.06); // 1.1 .. ~1.16
+        bg.style.transform = `translate3d(${finalX}px, ${finalY}px, 0) scale(${dynamicScale.toFixed(3)})`;
+
+        // dynamic filter: increase blur and slightly desaturate as we scroll
+        const blurPx = Math.min(6, (maxScrollOffset / hero.clientHeight) * 6); // up to 6px blur
+        const sat = Math.max(0.6, 1 - (maxScrollOffset / hero.clientHeight) * 0.25); // down to 0.75
+        const bright = Math.max(0.85, 1 - (maxScrollOffset / hero.clientHeight) * 0.12);
+        const filterValue = `saturate(${sat}) contrast(1) brightness(${bright}) blur(${blurPx}px)`;
+        bg.style.setProperty('--hero-filter', filterValue);
+
+        rafId = requestAnimationFrame(update);
+      }
+
+      function onMove(e) {
+        const rect = hero.getBoundingClientRect();
+        mouseX = (e.clientX - rect.left - rect.width / 2) * -0.02; // invert
+        mouseY = (e.clientY - rect.top - rect.height / 2) * -0.02;
+        if (!rafId) update();
+      }
+
+      // handle touch: use center point
+      function onTouch(e) {
+        if (!e.touches || !e.touches.length) return;
+        onMove(e.touches[0]);
+      }
+
+      hero.addEventListener('mousemove', onMove);
+      hero.addEventListener('touchmove', onTouch, { passive: true });
+      window.addEventListener('scroll', () => { if (!rafId) update(); });
+    })();
+  </script>
+  <script>
     // Animace číselných ukazatelů  
 
     $(document).ready(function () {
@@ -591,6 +742,74 @@
         }
       });
     });
+  </script>
+
+  <script>
+    // Wire up flip-card toggle buttons for touch devices
+    (function () {
+      document.querySelectorAll('.flip-card__toggle').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const card = btn.closest('.flip-card');
+          if (!card) return;
+          const isFlipped = card.classList.toggle('is-flipped');
+          btn.setAttribute('aria-expanded', isFlipped ? 'true' : 'false');
+        });
+      });
+
+      // Close flipped cards when clicking outside
+      document.addEventListener('click', function (e) {
+        document.querySelectorAll('.flip-card.is-flipped').forEach(c => {
+          if (!c.contains(e.target)) {
+            c.classList.remove('is-flipped');
+            const t = c.querySelector('.flip-card__toggle');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // Prevent propagation when clicking inside card (so outside click doesn't immediately close)
+      document.querySelectorAll('.flip-card').forEach(c => c.addEventListener('click', e => e.stopPropagation()));
+    })();
+  </script>
+  <!-- Theme toggle button -->
+  <button id="theme-toggle" aria-label="Toggle theme" title="Toggle theme"
+    style="position:fixed;right:1rem;bottom:1rem;z-index:1200;border:none;background:none;padding:0;">
+    <svg id="theme-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="5" fill="var(--primary)" />
+    </svg>
+  </button>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      const icon = document.getElementById('theme-icon');
+      const LS_KEY = 'hm_theme';
+
+      function applyTheme(dark) {
+        if (dark) root.classList.add('dark-theme'); else root.classList.remove('dark-theme');
+        // simple icon swap: circle for sun, crescent for moon
+        if (icon) {
+          if (dark) {
+            icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="var(--primary)"/>';
+          } else {
+            icon.innerHTML = '<circle cx="12" cy="12" r="5" fill="var(--primary)" />';
+          }
+        }
+      }
+
+      // init from localStorage
+      const stored = localStorage.getItem(LS_KEY);
+      const darkInit = stored === 'dark' || (stored === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      applyTheme(darkInit);
+
+      toggle.addEventListener('click', function () {
+        const isDark = root.classList.toggle('dark-theme');
+        localStorage.setItem(LS_KEY, isDark ? 'dark' : 'light');
+        applyTheme(isDark);
+      });
+    })();
   </script>
 
 
