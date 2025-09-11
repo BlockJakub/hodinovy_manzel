@@ -8,9 +8,20 @@
     const h2 = document.querySelector('h2');
     if (!h2) return;
 
-    // Wrap each character in a span for per-letter animation
+    // Wrap each character in a span for per-letter animation (safe DOM creation)
     const text = h2.textContent.trim();
-    h2.innerHTML = text.split('').map(ch => `<span class="title-char">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
+    // clear existing text
+    while (h2.firstChild) h2.removeChild(h2.firstChild);
+    for (const ch of text) {
+        const span = document.createElement('span');
+        span.className = 'title-char';
+        if (ch === ' ') {
+            span.appendChild(document.createTextNode('\u00A0'));
+        } else {
+            span.appendChild(document.createTextNode(ch));
+        }
+        h2.appendChild(span);
+    }
 
     anime.timeline({ loop: true })
         .add({
