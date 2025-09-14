@@ -3,7 +3,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         const root = document.documentElement;
         const toggle = document.getElementById('themeToggle');
-        const icon = toggle;
+        const iconImg = document.getElementById('themeToggleIcon');
         const LS_KEY = 'hm_theme';
 
         const sectionIds = ['about', 'portfolio', 'testimonials', 'stats', 'faq'];
@@ -42,9 +42,12 @@
 
         function applyTheme(dark) {
             if (dark) root.classList.add('dark-theme'); else root.classList.remove('dark-theme');
-            if (icon) {
-                icon.textContent = dark ? '☀️' : '🌙';
-                icon.setAttribute('aria-pressed', dark ? 'true' : 'false');
+            if (iconImg) {
+                iconImg.src = dark ? 'Img/icon_sun.svg' : 'Img/icon-moon.svg';
+                iconImg.alt = dark ? 'Světlý motiv' : 'Tmavý motiv';
+            }
+            if (toggle) {
+                toggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
             }
             adjustStaticSections(dark);
         }
