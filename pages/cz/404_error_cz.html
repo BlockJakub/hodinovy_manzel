@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/lft2pcd.css">
 
     <!-- Vlastní CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 
     <!-- jQuery (pro animace) -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -38,8 +38,8 @@
 
         <div class="container">
             <div class="language-switch">
-                <a href="index.html">CZ</a> |
-                <a href="index-eng.html">ENG</a>
+                <a href="404_error_cz.html">CZ</a> |
+                <a href="../eng/404_error_eng.html">ENG</a>
             </div>
             <!-- Theme toggle placed in header for visibility -->
             <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
@@ -48,8 +48,8 @@
                 <div class="navbar__brand">
                     <a href="#hero" class="text-2xl font-bold" aria-label="Home">
                         <!-- Replaced non-standard <logo> tag with a standard figure for accessibility -->
-                        <figure class="m-0 logo"><img src="Img/logo_handy_man_transbg.svg" width="126" height="126"
-                                alt="Hodinový manžel logo" class="d-inline-block"></figure>
+                        <figure class="m-0 logo"><img src="../../Img/logo_handy_man_transbg.svg" width="126"
+                                height="126" alt="Hodinový manžel logo" class="d-inline-block"></figure>
                     </a>
                 </div>
 
@@ -60,49 +60,25 @@
 
                 <!-- The main navigation menu -->
                 <ul id="menu" class="navbar__menu navbar__menu--mobile">
-                    <li><a href="#hero" class="navbar__link">Home</a></li>
-                    <li><a href="#services" class="navbar__link">Služby</a></li>
-                    <li><a href="#about" class="navbar__link">O mně</a></li>
-                    <li><a href="#portfolio" class="navbar__link">Ukázky</a></li>
-                    <li><a href="#testimonials" class="navbar__link">Reference</a></li>
-                    <li><a href="#contact" class="navbar__link">Kontakt</a></li>
+                    <li><a href="../../index.html" class="navbar__link">Home</a></li>
+                    <li><a href="../../index.html#services" class="navbar__link">Služby</a></li>
+                    <li><a href="../../index.html#about" class="navbar__link">O mně</a></li>
+                    <li><a href="../../index.html#portfolio" class="navbar__link">Ukázky</a></li>
+                    <li><a href="../../index.html#testimonials" class="navbar__link">Reference</a></li>
+                    <li><a href="../../index.html#contact" class="navbar__link">Kontakt</a></li>
                 </ul>
             </nav>
 
         </div>
     </header>
+    <div class="container my-5" id="main-content" tabindex="-1"
+        style="font-family: 'consolas'; font-size: 83px; padding: 5rem;">
 
-    <!-- HERO -->
-    <section id="hero" class="text-white d-flex align-items-center parallax-hero mt-5 mb-5" style="min-height:70vh;">
-        <!-- Parallax background layer — moved out of inline style so JS can animate it -->
-        <div class="hero__bg" aria-hidden="true"
-            style="background-image: url('Img/Firefly_professional_handyman.jpg');">
-        </div>
-        <div class="container text-center py-5 large grid centered square-grid">
-            <h1 class="display-1 fw-bold text-xl">Hodinový manžel, práce kolem domu</h1>
-            <p class="lead mb-4 fw-medium">Práce kolem domu. Montáže polic, montáž nábytku, výměna svítidel, drobné
-                opravy a
-                vše, co zvládne zkušený
-                pomocník.</p>
-
-            <div class="d-flex justify-content-center gap-3">
-                <!-- WhatsApp click-to-chat (opens in new tab) -->
-                <a href="https://wa.me/420603861311?text=Zdrav%C3%ADm%2C%20m%C3%A1m%20z%C3%A1jem%20o%20slu%C5%BEby"
-                    target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg">
-                    <i class="bi bi-whatsapp"></i> WhatsApp
-                </a>
-                <a href="#services" class="btn btn-outline-light btn-lg">Naše služby</a>
-            </div>
-
-            <p class="mt-3 small opacity-75">Pozn.: Tento web je prezentační vizitka — neukládáme žádná osobní data.</p>
-        </div>
-    </section>
-
-    <body>
         <h1>404</h1>
         <p>Omlouváme se, tato stránka neexistuje.</p>
-        <p><a href="index.html">Zpět na hlavní stránku</a></p>
-    </body>
+        <p><a href="../../index.html">Zpět na hlavní stránku</a></p>
+    </div>
+</body>
 </body>
 <script>
     // Redirect to 500.html on uncaught JavaScript errors
@@ -112,9 +88,11 @@
     };
 </script>
 
-<footer class="py-4 bg-dark text-center text-white mt-5">
+<!-- FOOTER -->
+<footer class="py-4 bg-dark text-center text-white">
     <div class="container">
-        <p class="mb-3 fs-5 fw-bold">© <span id="year-404"></span> Hodinový Manžel</p>
+        <p class="mb-3 fs-5 fw-bold">© <span id="year"></span> Hodinový Manžel</p>
+
         <div class="social-icons mb-3">
             <a href="https://www.facebook.com/antonin.petnik" class="text-white me-3"><i class="bi bi-facebook"></i></a>
             <a href="https://www.instagram.com/_antony_5/" class="text-white me-3"><i class="bi bi-instagram"></i></a>
@@ -122,19 +100,45 @@
                     class="bi bi-linkedin"></i></a>
             <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
         </div>
+
+        <div class="logo">
+            <a href="#" class="d-block" aria-hidden="true"><img src="../../Img/logo_handy_man_transbg.svg" width="96"
+                    height="96" alt="Hodinový manžel logo" class="d-inline-block"></a>
+
+        </div>
+
         <small class="text-muted d-block">
-            Tento web je prezentační vizitka (bez formulářů). Nezpracováváme osobní údaje klientů z důvodu
-            kybernetické
-            bezpečnosti.
+            Tento web je prezentační vizitka (bez formulářů).
+            Nezpracováváme osobní údaje klientů z důvodu kybernetické bezpečnosti.
         </small>
-        <nav class="footer-nav mt-3" aria-label="Právní a informační stránky">
-            <a href="terms.html" class="text-decoration-none text-secondary mx-2">Obchodní podmínky</a>|
-            <a href="privacy.html" class="text-decoration-none text-secondary mx-2">Ochrana osobních údajů</a>|
-            <a href="copyright.html" class="text-decoration-none text-secondary mx-2">Autorská práva</a>|
-            <a href="imprint.html" class="text-decoration-none text-secondary mx-2">Imprint & Kontakt</a>|
+        <nav class=" footer-nav mt-3" aria-label="Právní a informační stránky">
+            <a href="terms_cz.html" class="text-decoration-none text-secondary mx-2">Obchodní podmínky</a>|
+            <a href="privacy_cz.html" class="text-decoration-none text-secondary mx-2">Ochrana osobních údajů</a>|
+            <a href="copyright_cz.html" class="text-decoration-none text-secondary mx-2">Autorská práva</a>|
+            <a href="imprint_cz.html" class="text-decoration-none text-secondary mx-2">Imprint & Kontakt</a>|
         </nav>
     </div>
 </footer>
+<!-- Local scripts (deferred) -->
+<!-- theme toggle moved to header -->
+
+
 </body>
+<!-- Load anime.js before logo-anim.js to ensure availability -->
+<script>
+    // Redirect to 500.html on uncaught JavaScript errors
+    window.onerror = function (message, source, lineno, colno, error) {
+        window.location.href = "500.html";
+        return true;
+    };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+<script defer src="../../js/logo-anim.js"></script>
+<script defer src="../../js/about-overlay.js"></script>
+<script defer src="../../js/parallax-hero.js"></script>
+<script defer src="../../js/counters.js"></script>
+<script defer src="../../js/flip-cards.js"></script>
+<script defer src="../../js/site-utils.js"></script>
+<script defer src="../../js/theme-toggle.js"></script>
 
 </html>
