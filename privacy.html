@@ -2,21 +2,90 @@
 <html lang="cs">
 
 <head>
-    <meta charset="utf-8">
-    <title>Zásady ochrany osobních údajů</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hodinový manžel</title>
+    <meta name="description"
+        content="Hodinový manžel – montáže, vrtání, montáž nábytku, výměna lustrů a další drobné domácí práce. Kvalitně, rychle a za férovou cenu.">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Vlastní CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_dark.css">
+
+    <!-- jQuery (pro animace) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Bootstrap bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Vlastní JS -->
+    <script defer src="js/sidebar_responsive.js"></script>
+
+    <!-- Inline scripts moved to external files for maintainability -->
 </head>
 
 <body>
-    <div class="container py-5">
-        <h1>Zásady ochrany osobních údajů</h1>
-        <p>Tento web je prezentační vizitka a neukládá žádné osobní údaje návštěvníků. Nepoužíváme cookies, analytické
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="visually-hidden-focusable skip-link">Přeskočit na hlavní obsah</a>
+    <!-- HEADER / NAV -->
+    <header class="bg-warning sticky-top shadow-sm header">
+
+
+        <div class="container">
+            <div class="header-switches">
+                <div class="language-switch fs-2">
+                    <a href="index.html">CZ</a> |
+                    <a href="index_eng.html">ENG</a>
+                </div>
+                <!-- Theme toggle placed next to language switch -->
+                <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
+                    aria-label="Toggle theme">
+                    <img id="themeToggleIcon" src="Img/icon_moon2.svg" alt="Přepnout motiv" width="28" height="28"
+                        style="vertical-align:middle;" />
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <nav class="navbar container navbar-expand-lg rounded">
+                <div class="navbar__brand">
+                    <a href="#hero" class="text-2xl font-bold" aria-label="Home">
+                        <!-- Replaced non-standard <logo> tag with a standard figure for accessibility -->
+                        <figure class="m-0 logo"><img src="Img/logo_handy_man_transbg.svg" width="126" height="126"
+                                alt="Hodinový manžel logo" class="d-inline-block"></figure>
+                    </a>
+                </div>
+
+                <!-- The hamburger icon and toggle button -->
+                <button id="toggle-btn" class="navbar__toggle" aria-label="Toggle navigation">
+                    <span class="navbar__toggle-icon"></span>
+                </button>
+
+                <!-- The main navigation menu -->
+                <ul id="menu" class="navbar__menu navbar__menu--mobile">
+                    <li><a href="#hero" class="navbar__link">Home</a></li>
+                    <li><a href="#services" class="navbar__link">Služby</a></li>
+                    <li><a href="#about" class="navbar__link">O mně</a></li>
+                    <li><a href="#portfolio" class="navbar__link">Ukázky</a></li>
+                    <li><a href="#testimonials" class="navbar__link">Reference</a></li>
+                    <li><a href="#contact" class="navbar__link">Kontakt</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+    <main id="main-content" class="container py-5">
+        <h1 class="h1">Zásady ochrany osobních údajů</h1>
+        <p>Tento web je prezentační vizitka a neukládá žádné osobní údaje návštěvníků. Nepoužíváme cookies,
+            analytické
             nástroje ani reklamní systémy.</p>
         <p>Pokud nás kontaktujete telefonicky nebo e-mailem, vaše údaje budou použity pouze pro domluvu termínu a
             realizaci služby. Nebudou předány třetím stranám.</p>
         <p>V případě dotazů nás kontaktujte na uvedených kontaktech.</p>
-    </div>
+    </main>
 
     <footer class="py-4 bg-dark text-center text-white mt-5">
         <div class="container">
@@ -42,14 +111,15 @@
             </nav>
         </div>
     </footer>
+
+    <script>
+        // Redirect to 500.html on uncaught JavaScript errors
+        window.onerror = function (message, source, lineno, colno, error) {
+            window.location.href = "500.html";
+            return true;
+        };
+    </script>
+
 </body>
-</body>
-<script>
-    // Redirect to 500.html on uncaught JavaScript errors
-    window.onerror = function (message, source, lineno, colno, error) {
-        window.location.href = "500.html";
-        return true;
-    };
-</script>
 
 </html>

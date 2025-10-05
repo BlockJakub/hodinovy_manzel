@@ -1,3 +1,4 @@
+
 (function () {
     // Small site utilities: footer year, smooth scroll anchors, header scroll color
     document.addEventListener('DOMContentLoaded', function () {

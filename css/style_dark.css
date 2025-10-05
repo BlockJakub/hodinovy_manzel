@@ -1,0 +1,55 @@
+/* Dark theme overrides extracted from style.css */
+
+/* Ensure a base heading color exists even if the primary stylesheet path differs */
+:root {
+    --heading-color: #0b2a3a;
+    /* strong heading for light surfaces */
+}
+
+/* When the root element has .dark-theme, set dark variables */
+:root.dark-theme {
+    /* Core tokens */
+    --bg: #181c22;
+    --surface_dark: #23272f;
+    --surface: var(--surface_dark, #23272f);
+    --text_white: #e6e6e6;
+    --muted-text: #b0b8c1;
+    --shadow-light: #ffffff08;
+    --shadow-dark: #00000099;
+    --neumo-offset: 6px;
+    --card-gradient: linear-gradient(135deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.12));
+    --border-muted: #444a57;
+    /* Cards in dark mode */
+    --card-surface-elev: #2b313b;
+    --card-back-bg: #313846;
+    --card-back-color: #e8eef5;
+    --card-back-border: #3a4150;
+    --flip-card-canvas: #23272f;
+    /* Typography in dark mode */
+    --heading-color: #e8eef5;
+    /* light heading for dark surfaces */
+}
+
+/* Make flip-card titles clearly larger and properly colored across themes */
+.flip-card .card-title {
+    font-size: 27px;
+    line-height: 1.25;
+    color: var(--heading-color, #0b2a3a);
+}
+
+/* Optional: base dark background/text for the document if needed */
+:root.dark-theme body {
+    background-color: var(--bg);
+    color: var(--muted-text);
+}
+
+/* Components that reference variables will inherit automatically. If any component
+   needs explicit dark styles beyond variables, add them below. For example: */
+
+/* Desktop navbar pill (kept consistent with previous desktop override) */
+@media (min-width: 769px) {
+    :root.dark-theme .navbar__menu--mobile {
+        background-color: rgba(255, 255, 255, 0.08);
+        /* subtle translucent in dark */
+    }
+}

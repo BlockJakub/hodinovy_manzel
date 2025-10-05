@@ -1,5 +1,4 @@
 <!doctype html>
-<!doctype html>
 <html lang="en">
 
 <head>
@@ -15,13 +14,13 @@
     <link rel="stylesheet" href="https://use.typekit.net/lft2pcd.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_dark.css">
     <!-- jQuery (for animations) -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Bootstrap bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script defer src="js/sidebar_responsive.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
     <!-- Inline scripts moved to external files for maintainability -->
 </head>
 
@@ -29,22 +28,33 @@
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="visually-hidden-focusable skip-link">Skip to main content</a>
     <!-- HEADER / NAV -->
-    <header class="bg-warning sticky-top shadow-sm">
+    <header class="bg-warning sticky-top shadow-sm header">
+
+
         <div class="container">
-            <div class="language-switch">
-                <a href="index.html">CZ</a> |
-                <a href="index-eng.html">ENG</a>
+            <div class="header-switches">
+                <div class="language-switch">
+                    <a href="index.html">CZ</a> |
+                    <a href="index_eng.html">ENG</a>
+                </div>
+                <!-- Theme toggle placed next to language switch -->
+                <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
+                    aria-label="Toggle theme">
+                    <img id="themeToggleIcon" src="Img/icon_moon2.svg" alt="Přepnout motiv" width="28" height="28"
+                        style="vertical-align:middle;" />
+                </div>
             </div>
-            <!-- Theme toggle placed in header for visibility -->
-            <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
-                aria-label="Toggle theme">🌙</div>
-            <nav class="navbar container navbar-expand-lg rounded shadow-lg">
+        </div>
+        <div class="container">
+            <nav class="navbar container navbar-expand-lg rounded">
                 <div class="navbar__brand">
                     <a href="#hero" class="text-2xl font-bold" aria-label="Home">
+                        <!-- Replaced non-standard <logo> tag with a standard figure for accessibility -->
                         <figure class="m-0 logo"><img src="Img/logo_handy_man_transbg.svg" width="126" height="126"
-                                alt="Handyman logo" class="d-inline-block"></figure>
+                                alt="Hodinový manžel logo" class="d-inline-block"></figure>
                     </a>
                 </div>
+
                 <!-- The hamburger icon and toggle button -->
                 <button id="toggle-btn" class="navbar__toggle" aria-label="Toggle navigation">
                     <span class="navbar__toggle-icon"></span>
@@ -63,10 +73,12 @@
     </header>
     <!-- HERO -->
     <section id="hero" class="text-white d-flex align-items-center parallax-hero mt-5 mb-5" style="min-height:70vh;">
+        <!-- Parallax background layer — moved out of inline style so JS can animate it -->
         <div class="hero__bg" aria-hidden="true"
-            style="background-image: url('Img/Firefly_professional_handyman.jpg');"></div>
+            style="background-image: url('Img/Firefly_professional_handyman.jpg');">
+        </div>
         <div class="container text-center py-5 large grid centered square-grid">
-            <h1 class="display-1 fw-bold text-xl">Handyman, work around the house</h1>
+            <h1 class="display-1">Handyman, work around the house</h1>
             <p class="lead mb-4 fw-medium">Work around the house. Shelf installation, furniture assembly, lamp
                 replacement, small repairs, and anything a skilled helper can do.</p>
             <div class="d-flex justify-content-center gap-3">
@@ -74,16 +86,91 @@
                     target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg">
                     <i class="bi bi-whatsapp"></i> WhatsApp
                 </a>
-                <a href="#services" class="btn btn-outline-light btn-lg">Our services</a>
+                <a href="#services" class="btn btn-outline-light btn-lg hero_btn">Our services</a>
             </div>
             <p class="mt-3 small opacity-75">Note: This website is a presentation card — we do not store any personal
                 data.</p>
         </div>
     </section>
+
+
+    <!-- FAQ / Často kladené otázky -->
+    <section id="faq" class="py-5 bg-light">
+        <div class="container">
+            <div class="position-relative">
+                <h2 class="m-4 text-center mb-5">Frequently Asked Questions</h2>
+            </div>
+            <div id="faqCarousel" class="carousel slide carousel-light" data-bs-ride="carousel" data-bs-interval="3700"
+                data-bs-pause="hover" data-bs-wrap="true" aria-label="CarouselČasto kladené otázky">
+
+                <!-- Carousel indicators -->
+                <div class="carousel-indicators mb-1">
+                    <button type="button" data-bs-target="#faqCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Do you bring your own tools and materials?"></button>
+                    <button type="button" data-bs-target="#faqCarousel" data-bs-slide-to="1"
+                        aria-label="Which areas do you cover?"></button>
+                    <button type="button" data-bs-target="#faqCarousel" data-bs-slide-to="2"
+                        aria-label="Do you provide a guarantee for your work?"></button>
+                    <button type="button" data-bs-target="#faqCarousel" data-bs-slide-to="3"
+                        aria-label="What jobs do you not do?"></button>
+                </div>
+
+                <!-- Carousel items -->
+                <div class="carousel-inner" style="min-height: 27vh; height: 27vh; transition: all 0.3s;">
+                    <div class="carousel-item active">
+                        <div class="text-center">
+                            <h3 class="mb-4">Do you bring your own tools and materials?</h3>
+                            <p>I always bring my own professional tools. Small materials (wall plugs, screws, seals) are
+                                included in the price. For larger or special parts, I can provide them or you can supply
+                                them yourself.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="text-center">
+                            <h3 class="mb-4">Which areas do you cover?</h3>
+                            <p>I mostly work in <strong>Prague and the surrounding area</strong>. For jobs outside this
+                                area, a small travel fee may apply.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="text-center">
+                            <h3 class="mb-4">Do you provide a guarantee for your work?</h3>
+                            <p>Yes, I stand by my work. If a problem arises within a reasonable time, I will come and
+                                fix it free of charge.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="text-center">
+                            <h3 class="mb-4">What jobs do you not do?</h3>
+                            <p>I do not perform <strong>complex electrical installations, gas work, or extensive
+                                    plumbing work</strong>. These activities must be entrusted to licensed
+                                professionals. However, I can help with minor related tasks and recommend reliable
+                                specialists.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Carousel controls -->
+                <div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#faqCarousel"
+                        data-bs-slide="prev" aria-label="Previous question">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#faqCarousel"
+                        data-bs-slide="next" aria-label="Another question">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- SERVICES -->
     <section id="services" class="py-5 bg-warning">
         <div class="container">
-            <h2 class="mb-5 text-center text-muted">What I can do for you</h2>
+            <h2 class="mb-5 text-center fs-1 text-muted"><strong>What I can do for you</strong></h2>
             <div class="row g-4 mt-5">
                 <div class="col-md-4">
                     <div class="card h-100 service-card flip-card neumorphic" tabindex="0">
@@ -95,14 +182,15 @@
                             </svg>
                         </button>
                         <div class="flip-card__inner">
-                            <div class="flip-card__front card-body text-center">
+                            <div class="flip-card__front card-body text-center d-flex flex-column align-items-center">
                                 <div class="icon mb-3"><i class="bi bi-hammer fs-1"></i></div>
                                 <h5 class="card-title">Drilling & Shelf Installation</h5>
                                 <p class="card-text">Precise drilling, wall anchoring, and bracket installation.</p>
                             </div>
                             <div class="flip-card__back card-body text-center">
-                                <div class="back-inner">
-                                    <h5 class="card-title">Est. Price / Time</h5>
+                                <div class="back-inner d-flex flex-column align-items-center">
+                                    <div class="icon mb-2"><i class="bi bi-hammer fs-1"></i></div>
+                                    <h5 class="card-title mb-2">Est. Price / Time</h5>
                                     <p class="mb-1">Price: 350–700 CZK</p>
                                     <p class="mb-0">Time: 30–90 min</p>
                                 </div>
@@ -120,15 +208,16 @@
                             </svg>
                         </button>
                         <div class="flip-card__inner">
-                            <div class="flip-card__front card-body text-center">
+                            <div class="flip-card__front card-body text-center d-flex flex-column align-items-center">
                                 <div class="icon mb-3"><i class="bi bi-lightbulb fs-1"></i></div>
                                 <h5 class="card-title">Lamp & Fixture Installation</h5>
                                 <p class="card-text">Mechanical mounting of lighting. (Complex electrical work requires
                                     a certified electrician.)</p>
                             </div>
                             <div class="flip-card__back card-body text-center">
-                                <div class="back-inner">
-                                    <h5 class="card-title">Est. Price / Time</h5>
+                                <div class="back-inner d-flex flex-column align-items-center">
+                                    <div class="icon mb-2"><i class="bi bi-lightbulb fs-1"></i></div>
+                                    <h5 class="card-title mb-2">Est. Price / Time</h5>
                                     <p class="mb-1">Price: 450–1200 CZK</p>
                                     <p class="mb-0">Time: 30–120 min</p>
                                 </div>
@@ -146,14 +235,15 @@
                             </svg>
                         </button>
                         <div class="flip-card__inner">
-                            <div class="flip-card__front card-body text-center">
+                            <div class="flip-card__front card-body text-center d-flex flex-column align-items-center">
                                 <div class="icon mb-3"><i class="bi bi-box-seam fs-1"></i></div>
                                 <h5 class="card-title">Furniture Assembly</h5>
                                 <p class="card-text">Assembly of flat-pack furniture (IKEA, etc.).</p>
                             </div>
                             <div class="flip-card__back card-body text-center">
-                                <div class="back-inner">
-                                    <h5 class="card-title">Est. Price / Time</h5>
+                                <div class="back-inner d-flex flex-column align-items-center">
+                                    <div class="icon mb-2"><i class="bi bi-box-seam fs-1"></i></div>
+                                    <h5 class="card-title mb-2">Est. Price / Time</h5>
                                     <p class="mb-1">Price: 350–2500 CZK</p>
                                     <p class="mb-0">Time: 30 min – 6 hours (depending on scope)</p>
                                 </div>
@@ -171,14 +261,15 @@
                             </svg>
                         </button>
                         <div class="flip-card__inner">
-                            <div class="flip-card__front card-body text-center">
+                            <div class="flip-card__front card-body text-center d-flex flex-column align-items-center">
                                 <div class="icon mb-3"><i class="bi bi-tv fs-1"></i></div>
                                 <h5 class="card-title">TV & Wall Mount Installation</h5>
                                 <p class="card-text">Safe installation of mounts and securing your TV.</p>
                             </div>
                             <div class="flip-card__back card-body text-center">
-                                <div class="back-inner">
-                                    <h5 class="card-title">Est. Price / Time</h5>
+                                <div class="back-inner d-flex flex-column align-items-center">
+                                    <div class="icon mb-2"><i class="bi bi-tv fs-1"></i></div>
+                                    <h5 class="card-title mb-2">Est. Price / Time</h5>
                                     <p class="mb-1">Price: 600–2500 CZK</p>
                                     <p class="mb-0">Time: 45–120 min</p>
                                 </div>
@@ -196,15 +287,16 @@
                             </svg>
                         </button>
                         <div class="flip-card__inner">
-                            <div class="flip-card__front card-body text-center">
+                            <div class="flip-card__front card-body text-center d-flex flex-column align-items-center">
                                 <div class="icon mb-3"><i class="bi bi-droplet fs-1"></i></div>
                                 <h5 class="card-title">Small Plumbing Jobs</h5>
                                 <p class="card-text">Seal replacement, shower head change, drain fixes, faucet
                                     installation.</p>
                             </div>
                             <div class="flip-card__back card-body text-center">
-                                <div class="back-inner">
-                                    <h5 class="card-title">Est. Price / Time</h5>
+                                <div class="back-inner d-flex flex-column align-items-center">
+                                    <div class="icon mb-2"><i class="bi bi-droplet fs-1"></i></div>
+                                    <h5 class="card-title mb-2">Est. Price / Time</h5>
                                     <p class="mb-1">Price: 300–1500 CZK</p>
                                     <p class="mb-0">Time: 20–120 min</p>
                                 </div>
@@ -222,14 +314,15 @@
                             </svg>
                         </button>
                         <div class="flip-card__inner">
-                            <div class="flip-card__front card-body text-center">
+                            <div class="flip-card__front card-body text-center d-flex flex-column align-items-center">
                                 <div class="icon mb-3"><i class="bi bi-wrench-adjustable fs-1"></i></div>
                                 <h5 class="card-title">Small Repairs & Maintenance</h5>
                                 <p class="card-text">Door fixes, hinges, locks, seals, and adjustments.</p>
                             </div>
                             <div class="flip-card__back card-body text-center">
-                                <div class="back-inner">
-                                    <h5 class="card-title">Est. Price / Time</h5>
+                                <div class="back-inner d-flex flex-column align-items-center">
+                                    <div class="icon mb-2"><i class="bi bi-wrench-adjustable fs-1"></i></div>
+                                    <h5 class="card-title mb-2">Est. Price / Time</h5>
                                     <p class="mb-1">Price: 200–1200 CZK</p>
                                     <p class="mb-0">Time: 15–180 min</p>
                                 </div>
@@ -273,7 +366,7 @@
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <h2>About Me</h2>
+                    <h2 class="h2 text-center">About Me</h2>
                     <p class="lead">My name is <strong>Antonín Pětník</strong>. I offer hourly work and small home
                         repairs — reliable, tidy and for a fair price. I have many years of experience in assembly,
                         repairs and home maintenance. I am honest, punctual and if something cannot be fixed during a
@@ -284,13 +377,15 @@
                         <li><i class="bi bi-check2-circle text-success"></i> Insured and responsible approach</li>
                     </ul>
                     <div class="mt-3">
-                        <a href="tel:+420 603 861 311" class="btn btn-primary me-2"><i class="bi bi-telephone"></i>
+                        <a href="tel:+420 603 861 311" class="btn btn-outline-warning border-muted me-2 btn-rise"><i
+                                class="bi bi-telephone"></i>
                             Call</a>
-                        <a href="mailto:handyman@example.com" class="btn btn-outline-primary">Email</a>
+                        <a href="mailto:handyman@example.com" class="btn btn-outline-warning btn-rise">Email</a>
                     </div>
-                    <div class=" text-center" aria-hidden="true">
-                        <a href="#" class="d-block" aria-hidden="true"><img src="Img/logo_handy_man_transbg.svg"
-                                width="148" height="148" alt="Handyman logo" class="d-inline-block"></a>
+                    <div class="text-center" aria-hidden="true">
+                        <a href="#" class="d-inline-block logo" aria-hidden="true"><img
+                                src="Img/logo_handy_man_transbg.svg" width="148" height="148" alt="Handyman logo"
+                                class="d-inline-block"></a>
                     </div>
                 </div>
             </div>
@@ -299,7 +394,7 @@
     <!-- PORTFOLIO -->
     <section id="portfolio" class="py-5 bg-dark text-white">
         <div class="container">
-            <h2 class="mb-5 text-center">Portfolio of Completed Projects</h2>
+            <h2 class="h2 text-center">Portfolio of Completed Projects</h2>
             <div class="row g-3">
                 <div class="col-sm-6 col-md-4">
                     <div class="portfolio-item position-relative overflow-hidden">
@@ -332,7 +427,7 @@
         </div>
     </section>
     <section class="py-5 bg-warning text-dark">
-        <div class="container py-5">
+        <div class="container py-5 rounded shadow-lg bg-transparent text-dark">
             <h2 class="mb-4 text-center mb-5">Frequently Asked Questions</h2>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -350,33 +445,29 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <div class="p-3 bg-dark text-white rounded">
+                                <div class="p-3 bg-transparent text-dark rounded">
                                     <h5>Do you bring your own tools and materials?</h5>
-                                    <br>
-                                    <hr>
                                     <p>I always bring my own professional tools. Small materials (wall plugs, screws,
                                         seals) are included in the price. For larger or special parts, I can provide
                                         them or you can supply them yourself.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="p-3 bg-dark text-white rounded">
-                                    <h5>Which areas do you cover?</h5>
-                                    <br>
-                                    <hr>
-                                    <p>I mostly work in <strong>Prague and the surrounding area</strong>. For jobs
-                                        outside this area, a small travel fee may apply.</p>
+                                <div class="bg-transparent text-dark rounded">
+                                    <h5">Which areas do you cover?</h5>
+                                        <p>I mostly work in <strong>Prague and the surrounding area</strong>. For jobs
+                                            outside this area, a small travel fee may apply.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="p-3 bg-dark text-white rounded">
+                                <div class="p-3 bg-transparent text-dark rounded">
                                     <h5>Do you provide a guarantee for your work?</h5>
                                     <p>Yes, I stand by my work. If a problem arises within a reasonable time, I will
                                         come and fix it free of charge.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <div class="p-3 bg-dark text-white rounded">
+                                <div class="p-3 bg-transparent text-dark rounded">
                                     <h5>What jobs do you not do?</h5>
                                     <p>I do not perform <strong>complex electrical installations, gas work, or extensive
                                             plumbing work</strong>. These activities must be entrusted to licensed
@@ -417,8 +508,8 @@
                 <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
             </div>
             <div class="logo">
-                <a href="#" class="d-block" aria-hidden="true"><img src="Img/logo_handy_man_transbg.svg" width="96"
-                        height="96" alt="Handyman logo" class="d-inline-block"></a>
+                <a href="#" class="d-inline-block logo" aria-hidden="true"><img src="Img/logo_handy_man_transbg.svg"
+                        width="96" height="96" alt="Handyman logo" class="d-inline-block"></a>
             </div>
             <small class="text-muted d-block">
                 This website is a presentation card (no forms). We do not process client personal data for cybersecurity
@@ -454,5 +545,7 @@
 <script defer src="js/flip-cards.js"></script>
 <script defer src="js/site-utils.js"></script>
 <script defer src="js/theme-toggle.js"></script>
+
+</body>
 
 </html>

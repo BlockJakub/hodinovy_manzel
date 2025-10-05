@@ -17,6 +17,8 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/style_dark.css">
+    <link rel="stylesheet" href="../../css/style_dark.css">
 
     <!-- jQuery (for animations) -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -35,12 +37,15 @@
     <header class="bg-warning sticky-top shadow-sm header">
         <div class="container">
             <div class="language-switch">
-                <a href="imprint_cz.html">CZ</a> |
-                <a href="../eng/imprint_eng.html">ENG</a>
+                <a href="../cz/imprint_cz.html">CZ</a> |
+                <a href="imprint_eng.html">ENG</a>
             </div>
             <!-- Theme toggle -->
             <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
-                aria-label="Toggle theme">🌙</div>
+                aria-label="Toggle theme">
+                <img id="themeToggleIcon" data-base="../../" src="../../Img/icon_moon2.svg" alt="Toggle theme"
+                    width="28" height="28" style="vertical-align:middle;" />
+            </div>
         </div>
 
         <div class="container">
@@ -59,12 +64,12 @@
 
                 <!-- Main navigation -->
                 <ul id="menu" class="navbar__menu navbar__menu--mobile">
-                    <li><a href="../../index.html" class="navbar__link">Home</a></li>
-                    <li><a href="../../index.html#services" class="navbar__link">Services</a></li>
-                    <li><a href="../../index.html#about" class="navbar__link">About Me</a></li>
-                    <li><a href="../../index.html#portfolio" class="navbar__link">Portfolio</a></li>
-                    <li><a href="../../index.html#testimonials" class="navbar__link">Testimonials</a></li>
-                    <li><a href="../../index.html#contact" class="navbar__link">Contact</a></li>
+                    <li><a href="../../index_eng.html" class="navbar__link">Home</a></li>
+                    <li><a href="../../index_eng.html#services" class="navbar__link">Services</a></li>
+                    <li><a href="../../index_eng.html#about" class="navbar__link">About Me</a></li>
+                    <li><a href="../../index_eng.html#portfolio" class="navbar__link">Portfolio</a></li>
+                    <li><a href="../../index_eng.html#testimonials" class="navbar__link">Testimonials</a></li>
+                    <li><a href="../../index_eng.html#contact" class="navbar__link">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -76,10 +81,11 @@
             <img src="../../Img/snowboarder.jpg" class="img-fluid rounded shadow-lg" alt="Handyman at work">
         </div>
         <div class="col-3 mx-auto text-center mb-4">
-            <h1>Contact Details and Identification</h1>
+            <h1 class="h1">Contact Details and Identification</h1>
             <p><strong>Name:</strong> Antonín Pětník</p>
             <p><strong>Phone:</strong> <a href=" tel:+420603861311">+420 603 861 311</a></p>
-            <p><strong>Email:</strong> <a href="mailto:hodinovymanzel@example.com">hodinovymanzel@example.com</a></p>
+            <p><strong>Email:</strong> <a href="mailto:hodinovymanzel@example.com">hodinovymanzel@example.com</a>
+            </p>
             <p><strong>Address:</strong> Prague, Czech Republic</p>
             <p><strong>Company ID (IČO):</strong> (fill in if applicable)</p>
         </div>
@@ -106,15 +112,16 @@
             </small>
 
             <nav class="footer-nav mt-3" aria-label="Legal and information pages">
-                <a href="../eng/terms_eng.html" class="text-decoration-none text-secondary mx-2">Terms & Conditions</a>|
-                <a href="../eng/privacy_eng.html" class="text-decoration-none text-secondary mx-2">Privacy Policy</a>|
-                <a href="../eng/copyright_eng.html" class="text-decoration-none text-secondary mx-2">Copyright</a>|
-                <a href="../eng/imprint_eng.html" class="text-decoration-none text-secondary mx-2">Imprint &
+                <a href="terms_eng.html" class="text-decoration-none text-secondary mx-2">Terms &
+                    Conditions</a>|
+                <a href="privacy_eng.html" class="text-decoration-none text-secondary mx-2">Privacy
+                    Policy</a>|
+                <a href="copyright_eng.html" class="text-decoration-none text-secondary mx-2">Copyright</a>|
+                <a href="imprint_eng.html" class="text-decoration-none text-secondary mx-2">Imprint &
                     Contact</a>|
             </nav>
         </div>
     </footer>
-
     <!-- Error redirect script -->
     <script>
         // Redirect to 500.html on uncaught JavaScript errors

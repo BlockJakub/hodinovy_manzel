@@ -17,6 +17,7 @@
 
     <!-- Vlastní CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style_dark.css">
 
     <!-- jQuery (pro animace) -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -33,43 +34,60 @@
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="visually-hidden-focusable skip-link">Přeskočit na hlavní obsah</a>
     <!-- HEADER / NAV -->
-    <header class="bg-warning sticky-top shadow-sm">
-
-
+    <header class="bg-warning sticky-top shadow-sm header">
         <div class="container">
-            <div class="language-switch">
-                <a href="index.html">CZ</a> |
-                <a href="index-eng.html">ENG</a>
+            <div class="header-switches">
+                <div class="language-switch fs-2">
+                    <a href="404.html">CZ</a> |
+                    <a href="pages/eng/404_error_eng.html">ENG</a>
+                </div>
+                <!-- Theme toggle placed next to language switch -->
+                <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
+                    aria-label="Přepnout motiv">
+                    <img id="themeToggleIcon" src="Img/icon_moon2.svg" alt="Přepnout motiv" width="28" height="28"
+                        style="vertical-align:middle;" />
+                </div>
             </div>
-            <!-- Theme toggle placed in header for visibility -->
-            <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
-                aria-label="Toggle theme">🌙</div>
-            <nav class="navbar container navbar-expand-lg rounded shadow-lg">
+        </div>
+        <div class="container">
+            <nav class="navbar container navbar-expand-lg rounded">
                 <div class="navbar__brand">
-                    <a href="#hero" class="text-2xl font-bold" aria-label="Home">
-                        <!-- Replaced non-standard <logo> tag with a standard figure for accessibility -->
+                    <a href="index.html#hero" class="text-2xl font-bold" aria-label="Home">
                         <figure class="m-0 logo"><img src="Img/logo_handy_man_transbg.svg" width="126" height="126"
                                 alt="Hodinový manžel logo" class="d-inline-block"></figure>
                     </a>
                 </div>
-
-                <!-- The hamburger icon and toggle button -->
                 <button id="toggle-btn" class="navbar__toggle" aria-label="Toggle navigation">
                     <span class="navbar__toggle-icon"></span>
                 </button>
-
-                <!-- The main navigation menu -->
                 <ul id="menu" class="navbar__menu navbar__menu--mobile">
-                    <li><a href="#hero" class="navbar__link">Home</a></li>
-                    <li><a href="#services" class="navbar__link">Služby</a></li>
-                    <li><a href="#about" class="navbar__link">O mně</a></li>
-                    <li><a href="#portfolio" class="navbar__link">Ukázky</a></li>
-                    <li><a href="#testimonials" class="navbar__link">Reference</a></li>
-                    <li><a href="#contact" class="navbar__link">Kontakt</a></li>
+                    <li><a href="index.html#hero" class="navbar__link">Home</a></li>
+                    <li><a href="index.html#services" class="navbar__link">Služby</a></li>
+                    <li><a href="index.html#about" class="navbar__link">O mně</a></li>
+                    <li><a href="index.html#portfolio" class="navbar__link">Ukázky</a></li>
+                    <li><a href="index.html#testimonials" class="navbar__link">Reference</a></li>
+                    <li><a href="index.html#contact" class="navbar__link">Kontakt</a></li>
                 </ul>
             </nav>
-
         </div>
+    </header>
+    <main id="main-content" class="container py-5">
+        <h1 class="h1">Stránka nenalezena (404)</h1>
+        <!-- Add error page content here -->
+    </main>
+
+    <!-- The main navigation menu -->
+    <ul id="menu" class="navbar__menu navbar__menu--mobile">
+        <li><a href="#hero" class="navbar__link">Home</a></li>
+        <li><a href="#services" class="navbar__link">Služby</a></li>
+        <li><a href="#about" class="navbar__link">O mně</a></li>
+        <li><a href="#portfolio" class="navbar__link">Ukázky</a></li>
+        <li><a href="#testimonials" class="navbar__link">Reference</a></li>
+        <li><a href="#contact" class="navbar__link">Kontakt</a></li>
+    </ul>
+    </nav>
+
+    </div>
     </header>
 
     <!-- HERO -->

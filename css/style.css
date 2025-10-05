@@ -1,11 +1,11 @@
 /* ===================== TYPOGRAPHY SCALE ===================== */
-h1,
 .display-1 {
-  font-size: 4.813rem;
+  font-size: 72em;
   /* 77px */
   font-weight: 800;
-  line-height: 1.08;
+  line-height: 1.28;
   margin-bottom: 1.2rem;
+  font-family: 'Urbane', sans-serif;
 }
 
 h2,
@@ -100,7 +100,6 @@ body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   color: var(--muted-text);
   background: var(--bg);
-  font-size: 1.125rem;
   line-height: 1.7;
 }
 
@@ -125,7 +124,7 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* --- Ensure WhatsApp and Naše služby button animation always works --- */
+/* --- Ensure WhatsApp and Naše služby button animation always works (hero) --- */
 #hero .btn-success,
 #hero .hero_btn {
   transition: transform 0.25s cubic-bezier(.2, .9, .2, 1), box-shadow 0.25s cubic-bezier(.2, .9, .2, 1) !important;
@@ -148,17 +147,18 @@ p:last-child {
 
 /* Header switches flex container for language and theme toggle */
 .header-switches {
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 17px;
+  /* requested spacing */
 }
 
 @media (max-width: 768px) {
   .header-switches {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    /* keep spacing consistent on small screens */
   }
 
   .header-switches .language-switch {
@@ -167,7 +167,7 @@ p:last-child {
   }
 
   .header-switches .theme-toggle {
-    align-self: flex-start;
+    align-self: center;
   }
 
   /* removed stray closing curly brace */
@@ -191,6 +191,50 @@ p:last-child {
     transform: translateY(-8px) scale(1.04);
     box-shadow: 0 8px 32px rgba(255, 193, 7, 0.25), 0 2px 8px rgba(0, 0, 0, 0.10);
     z-index: 2;
+  }
+}
+
+/* Reusable rise-on-hover button effect (use .btn-rise on any btn) */
+.btn-rise {
+  transition: transform 0.25s cubic-bezier(.2, .9, .2, 1), box-shadow 0.25s cubic-bezier(.2, .9, .2, 1);
+  will-change: transform, box-shadow;
+}
+
+.btn-rise:hover,
+.btn-rise:focus {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.10);
+  z-index: 2;
+}
+
+/* Accent-aware shadows for common button variants */
+.btn-rise.btn-success:hover,
+.btn-rise.btn-success:focus {
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.25), 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.btn-rise.btn-outline-warning:hover,
+.btn-rise.btn-outline-warning:focus,
+.btn-rise.btn-warning:hover,
+.btn-rise.btn-warning:focus {
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.28), 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+.btn-rise.btn-primary:hover,
+.btn-rise.btn-primary:focus,
+.btn-rise.btn-outline-primary:hover,
+.btn-rise.btn-outline-primary:focus {
+  box-shadow: 0 8px 32px rgba(13, 110, 253, 0.26), 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .btn-rise,
+  .btn-rise:hover,
+  .btn-rise:focus {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -299,6 +343,9 @@ p:last-child {
   /* Theme variables - light (default) */
   --bg: #f8f9fa;
   --surface_light: #f6f7fb;
+  --surface: #ffffff;
+  /* default surface for light theme */
+  --text: #212529;
   --text_dark: #0d2b3a;
   --muted-text: #6c757d;
   --shadow-light: #ffffffe6;
@@ -306,24 +353,16 @@ p:last-child {
   --neumo-offset: 8px;
   --border-muted: #6c757d;
   --color-warning: #ffc107;
+  /* Card variables (light) */
+  --card-surface-elev: #f6f7fb;
+  --card-back-bg: var(--surface);
+  --card-back-color: #0b2a3a;
+  --card-back-border: rgba(0, 0, 0, 0.06);
+  /* Flip card canvas (what shows during rotation gaps) */
+  --flip-card-canvas: transparent;
 }
 
-/* Dark theme variables */
-:root .dark-theme {
-  --bg: #181c22;
-  --surface_dark: #23272f;
-  --text_white: #e6e6e6;
-  --muted-text: #b0b8c1;
-  --shadow-light: #ffffff08;
-  --shadow-dark: #00000099;
-  --neumo-offset: 6px;
-  --card-gradient: linear-gradient(135deg, #ffffff05, #0000001a);
-  --border-muted: #444a57;
-
-  /* Apply dark mode backgrounds and text to all major sections */
-  background-color: var(--surface_dark) !important;
-  color: var(--text_muted) !important;
-}
+/* Dark theme variables moved to css/style_dark.css */
 
 
 html {
@@ -355,6 +394,8 @@ header {
   color: var(--muted-text);
   font-weight: bold;
   margin: 0 0.25rem;
+  border: 3px solid transparent;
+  /* avoid layout shift on hover */
   transition: all 0.3s ease;
 }
 
@@ -368,17 +409,19 @@ header {
 
 .theme-toggle {
   display: inline-block;
-  padding: 0.3rem;
   margin-left: 0.5rem;
-  border: 3px solid var(--border-muted);
-  border-radius: 100%;
+  border: 3px solid transparent;
+  /* match language-switch baseline */
   cursor: pointer;
+  transition: all 0.3s ease;
+  /* match language-switch transition */
 }
 
 .theme-toggle:hover {
+  /* apply same hover accent and spacing as language-switch */
   padding: 0.3rem;
+  border: 3px solid var(--border-muted);
   border-radius: 7px;
-  transition: all 0.3s ease;
 }
 
 .logo img {
@@ -403,8 +446,7 @@ header {
   justify-content: space-between;
   align-items: center;
   font-family: 'Inter', sans-serif;
-  border-bottom: 2px solid #2d3748;
-  border-right: 2px solid #2d3748;
+
 }
 
 /* BEM Element: Navbar menu */
@@ -424,13 +466,15 @@ header {
   left: -110vw;
   /* Initially off-screen */
   max-width: 100%;
-  height: 43vh;
-  background-color: var(--surface_dark);
+  height: 26em;
+  /* Solid background for mobile menu; avoid transparency */
+  background-color: var(--surface, var(--surface_light, #767575));
   padding-top: 4rem;
   align-items: center;
   transition: left 1.7s ease-in-out;
   transition-delay: 0.3s;
   border-radius: 7px;
+  z-index: 1000;
 }
 
 /* BEM Modifier for open state (mobile) */
@@ -501,11 +545,16 @@ header {
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
+  border: 3px solid transparent;
+  /* avoid layout shift on hover */
+  transition: all 0.3s ease;
 }
 
 .navbar__link:hover {
-  background-color: #4a5568;
+  padding: 0.5rem 1rem;
+  /* keep same padding */
+  border-radius: 7px;
+  border-color: var(--border-muted);
 }
 
 /* Responsive design with media queries */
@@ -531,9 +580,10 @@ header {
     list-style: none;
     width: auto;
     height: auto;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.28);
     padding: 0;
     position: static;
+    border-radius: 7px;
   }
 
   .navbar__menu--mobile .navbar__link {
@@ -672,6 +722,15 @@ header {
   /* ensures card contributes to layout and prevents overlap */
   margin-bottom: 1rem;
   /* breathing room when flipped */
+  background: var(--flip-card-canvas);
+  border-radius: 12px;
+}
+
+/* Override Bootstrap .card defaults on the flip-card container */
+.flip-card.card {
+  background: var(--flip-card-canvas) !important;
+  border: 0 !important;
+  box-shadow: none;
 }
 
 /* Decorative gradient layer behind each card (theme-aware). Uses a pseudo-element so
@@ -712,6 +771,8 @@ header {
   justify-content: center;
   padding: 1rem;
   /* ensure internal spacing */
+  border-radius: 12px;
+  /* match container to avoid showing underlying canvas on corners */
 }
 
 .flip-card__front {
@@ -768,12 +829,19 @@ header {
 }
 
 
+/* ==================================================== ABOUT PHOTO + SOCIAL OVERLAY==================================================== */
+
+
+
 /* About photo + social overlay */
 .about-photo {
   display: inline-block;
   position: relative;
-  border-radius: 0.75rem;
+  border-radius: 0;
+  /* let child (img/overlay) control rounding exactly */
   overflow: hidden;
+  transition: transform 450ms cubic-bezier(.2, .9, .2, 1);
+  will-change: transform;
 }
 
 .about-photo__img {
@@ -784,6 +852,11 @@ header {
   will-change: transform;
 }
 
+.about-photo__link {
+  display: block;
+  /* ensure container matches image box exactly */
+}
+
 .about-photo__overlay {
   position: absolute;
   inset: 0;
@@ -792,21 +865,24 @@ header {
   justify-content: center;
   gap: 0.5rem;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.45));
-  transform: translateY(12%);
+  /* ensure edges match parent */
+  z-index: 1;
+  /* sit above the image */
   opacity: 0;
   pointer-events: none;
-  transition: transform 420ms cubic-bezier(.2, .9, .2, 1), opacity 320ms ease;
+  transition: opacity 320ms ease;
+  /* fade only to avoid jumping edges */
+  will-change: opacity;
 }
 
 .about-photo:focus-within .about-photo__overlay,
 .about-photo:hover .about-photo__overlay {
-  transform: translateY(0%);
   opacity: 1;
   pointer-events: auto;
 }
 
-.about-photo:focus-within .about-photo__img,
-.about-photo:hover .about-photo__img {
+.about-photo:focus-within,
+.about-photo:hover {
   transform: scale(1.03) rotate(-1deg);
 }
 
@@ -828,9 +904,10 @@ header {
 
 .about-photo__social:hover,
 .about-photo__social:focus {
-  background: var(--surface);
-  transform: translateY(0) scale(1.1);
-  outline: none;
+  background: var(--color-warning);
+  transform: translateY(0) scale(1.7);
+  outline: var(--text_dark) auto 2px;
+
 }
 
 /* Stagger children entrance */
@@ -1008,3 +1085,93 @@ footer {
 .carousel-control-next-icon {
   filter: invert(1);
 }
+
+/* Global spacing between sections (~200px) */
+section+section {
+  margin-top: 240px;
+}
+
+@media (max-width: 576px) {
+  section+section {
+    margin-top: 170px;
+    /* slightly reduced on small screens */
+  }
+}
+
+/* Spacer below major section titles */
+h1.display-1,
+h2.fs-1,
+h2.fs-2,
+h2.mb-5,
+h2.text-center,
+h2 {
+  margin-bottom: 2.2rem !important;
+}
+
+/* Logo hover shake animation */
+@keyframes logo-shake {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  10% {
+    transform: translate3d(2px, 0, 0) rotate(1deg);
+  }
+
+  20% {
+    transform: translate3d(-2px, 0, 0) rotate(-1deg);
+  }
+
+  30% {
+    transform: translate3d(2px, 0, 0) rotate(1.2deg);
+  }
+
+  40% {
+    transform: translate3d(-2px, 0, 0) rotate(-1.2deg);
+  }
+
+  50% {
+    transform: translate3d(1px, 0, 0) rotate(0.8deg);
+  }
+
+  60% {
+    transform: translate3d(-1px, 0, 0) rotate(-0.8deg);
+  }
+
+  70% {
+    transform: translate3d(1px, 0, 0) rotate(0.5deg);
+  }
+
+  80% {
+    transform: translate3d(-1px, 0, 0) rotate(-0.5deg);
+  }
+
+  90% {
+    transform: translate3d(0.5px, 0, 0) rotate(0.2deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+.logo img {
+  transform-origin: center center;
+  animation: none;
+  /* base state so hover swaps animation name and reliably retriggers */
+}
+
+.logo:hover img,
+.logo a:focus-visible img {
+  animation: logo-shake 600ms cubic-bezier(.2, .9, .2, 1) 1 both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .logo:hover img,
+  .logo a:focus img {
+    animation: none !important;
+  }
+}
+
+/* Dark theme variable for --surface moved to css/style_dark.css */

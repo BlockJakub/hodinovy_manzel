@@ -4,6 +4,7 @@
         const root = document.documentElement;
         const toggle = document.getElementById('themeToggle');
         const icon = toggle;
+        const iconImg = document.getElementById('themeToggleIcon');
         const LS_KEY = 'hm_theme';
 
         const sectionIds = ['about', 'portfolio', 'testimonials', 'stats', 'faq'];
@@ -43,8 +44,22 @@
         function applyTheme(dark) {
             if (dark) root.classList.add('dark-theme'); else root.classList.remove('dark-theme');
             if (icon) {
-                icon.textContent = dark ? '☀️' : '🌙';
                 icon.setAttribute('aria-pressed', dark ? 'true' : 'false');
+            }
+            // Prefer swapping an <img id="themeToggleIcon"> if present; fallback to emoji text
+            if (iconImg) {
+                try {
+                    const base = iconImg.getAttribute('data-base') || '';
+                    const sun = (base ? base : '') + 'Img/icon_sun.svg';
+                    const moon = (base ? base : '') + 'Img/icon_moon2.svg';
+                    iconImg.src = dark ? sun : moon;
+                    iconImg.alt = dark ? 'Switch to light theme' : 'Switch to dark theme';
+                } catch (_) {
+                    // Fallback silently to text content on error
+                    if (icon) icon.textContent = dark ? '☀️' : '🌙';
+                }
+            } else if (icon) {
+                icon.textContent = dark ? '☀️' : '🌙';
             }
             adjustStaticSections(dark);
         }
