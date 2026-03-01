@@ -1,7 +1,7 @@
 /* ===================== TYPOGRAPHY SCALE ===================== */
+h1,
 .display-1 {
-  font-size: 72em;
-  /* 77px */
+  font-size: 4.5rem; /* or 72px */
   font-weight: 800;
   line-height: 1.28;
   margin-bottom: 1.2rem;
@@ -1173,5 +1173,6 @@ h2 {
     animation: none !important;
   }
 }
+
 
 /* Dark theme variable for --surface moved to css/style_dark.css */
