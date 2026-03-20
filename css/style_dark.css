@@ -53,3 +53,36 @@
         /* subtle translucent in dark */
     }
 }
+
+/* Dark mode carousel arrow fixes */
+
+/* FAQ: dark bg in dark mode — white arrows (remove the invert) */
+:root.dark-theme #faq .carousel-control-prev-icon,
+:root.dark-theme #faq .carousel-control-next-icon {
+    filter: none;
+}
+
+/* Testimonials: carousel-dark has black arrows — invert to white on dark bg */
+:root.dark-theme .carousel-dark .carousel-control-prev-icon,
+:root.dark-theme .carousel-dark .carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* Testimonials section: text-dark in HTML is not removed by JS so we must
+   override it here. ID + class chain wins the !important specificity race. */
+:root.dark-theme #testimonials {
+    color: var(--text_white) !important;
+}
+
+:root.dark-theme #testimonials p {
+    color: var(--text_white) !important;
+}
+
+:root.dark-theme #testimonials .fw-bold.text-secondary {
+    color: var(--muted-text) !important;
+}
+
+/* carousel-dark indicators are black — make them light on dark background */
+:root.dark-theme #testimonials .carousel-indicators [data-bs-target] {
+    background-color: #e6e6e6;
+}

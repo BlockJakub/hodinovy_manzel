@@ -7,8 +7,17 @@
   <title>Hodinový manžel</title>
   <meta name="description"
     content="Hodinový manžel – montáže, vrtání, montáž nábytku, výměna lustrů a další drobné domácí práce. Kvalitně, rychle a za férovou cenu.">
-
-
+  <!-- Favicon -->
+  <link rel="icon" href="Img/logo_handy_man_transbg.svg" type="image/svg+xml">
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hodinový manžel – montáže, opravy, práce kolem domu">
+  <meta property="og:description"
+    content="Montáže polic, nábytku, výměna lustrů a drobné opravy. Kvalitně, rychle, za férovou cenu. Praha a okolí.">
+  <meta property="og:image" content="Img/Firefly_professional_handyman.jpg">
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,8 +32,6 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style_dark.css">
 
-  <!-- jQuery (pro animace) -->
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <!-- Bootstrap bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Vlastní JS -->
@@ -84,6 +91,7 @@
   </header>
 
   <!-- HERO -->
+  <span id="main-content" tabindex="-1" aria-hidden="true"></span>
   <section id="hero" class="text-white d-flex align-items-center parallax-hero mt-5 mb-5" style="min-height:70vh;">
     <!-- Parallax background layer — moved out of inline style so JS can animate it -->
     <div class="hero__bg" aria-hidden="true" style="background-image: url('Img/Firefly_professional_handyman.jpg');">
@@ -158,15 +166,7 @@
           </div>
         </div>
 
-        <!-- Carousel controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#faqCarousel" data-bs-slide="prev"
-          aria-label="Předchozí otázka">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#faqCarousel" data-bs-slide="next"
-          aria-label="Další otázka">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+
       </div>
     </div>
   </section>
@@ -369,7 +369,8 @@
           <div class="about-photo" tabindex="0">
             <a class="about-photo__link" href="https://www.facebook.com/antonin.petnik" target="_blank"
               rel="noopener noreferrer" aria-label="Facebook">
-              <img src="Img/snowboarder.jpg" alt="Hodinový manžel" class="img-fluid rounded shadow about-photo__img">
+              <img src="Img/snowboarder.jpg" alt="Hodinový manžel" class="img-fluid rounded shadow about-photo__img"
+                loading="lazy">
             </a>
 
             <div class="about-photo__overlay fs-3" aria-hidden="true">
@@ -385,7 +386,7 @@
           </div>
         </div>
         <div class="col-md-8">
-          <h1 class="h1 display-1 fs-1 fw-bold">O mně</h1>
+          <h2 class="h1 display-1 fs-1 fw-bold">O mně</h2>
           <p class="lead">Jmenuji se <strong>Antonín Pětník</strong>. Nabízím hodinové práce a malé opravy v domácnosti
             —
             spolehlivě, čistě a s rozumnou cenou. Mám dlouholeté zkušenosti s montážemi, opravami a údržbou domácností.
@@ -402,7 +403,7 @@
                 class="bi bi-telephone"></i>
               Zavolat</a>
             <!-- pokud chcete mail, ale pozor na spam -->
-            <a href="mailto:hodinovymanzel@example.com" class="btn btn-outline-warning btn-rise">Email</a>
+            <a href="mailto:info@hodinovymanzel.cz" class="btn btn-outline-warning btn-rise">Email</a>
           </div>
           <div class=" text-center" aria-hidden="true">
             <a href="#" class="d-inline-block logo" aria-hidden="true"><img src="Img/logo_handy_man_transbg.svg"
@@ -422,7 +423,7 @@
         <!-- Každý obrázek nahraď reálnými fotkami v /img/ -->
         <div class="col-sm-6 col-md-4">
           <div class="portfolio-item position-relative overflow-hidden">
-            <img src="Img/Firefly_bakingPizza.jpg" alt="Montáž police" class="img-fluid w-100">
+            <img src="Img/Firefly_bakingPizza.jpg" alt="Montáž police" class="img-fluid w-100" loading="lazy">
             <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
               <h5>Budování pizza krbu</h5>
               <p class="small mb-0">Přesné kotvení a budovani podle termodinamiky zdiva.</p>
@@ -432,7 +433,7 @@
 
         <div class="col-sm-6 col-md-4">
           <div class="portfolio-item position-relative overflow-hidden">
-            <img src="Img/furniture.jpg" alt="Montáž nábytku" class="img-fluid w-100">
+            <img src="Img/furniture.jpg" alt="Montáž nábytku" class="img-fluid w-100" loading="lazy">
             <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
               <h5>Montáž nábytku</h5>
               <p class="small mb-0">Sestavení a seřízení skříní.</p>
@@ -442,7 +443,7 @@
 
         <div class="col-sm-6 col-md-4">
           <div class="portfolio-item position-relative overflow-hidden">
-            <img src="Img/plumbers.jpg" alt="Výměna svítidla" class="img-fluid w-100">
+            <img src="Img/plumbers.jpg" alt="Výměna svítidla" class="img-fluid w-100" loading="lazy">
             <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
               <h5>Výměna syfonu</h5>
               <p class="small mb-0">Výměna a utěsnění syfonu u umyvadla.</p>
@@ -453,7 +454,7 @@
     </div>
   </section>
 
-  <section class="py-5 bg-warning text-dark">
+  <section id="testimonials" class="py-5 bg-warning text-dark">
     <div class="container py-5">
       <h2 class="h2 mb-5 text-center fs-1 fw-bold">Reference zákazníků</h2>
       <div id="testimonialCarousel2" class="carousel slide carousel-dark" data-bs-ride="carousel"
@@ -506,14 +507,7 @@
             </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel2" data-bs-slide="prev"
-          aria-label="Předchozí reference">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel2" data-bs-slide="next"
-          aria-label="Další reference">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+
       </div>
     </div>
   </section>
@@ -525,7 +519,7 @@
       <h2 class="h2">Kontakt</h2>
       <p class="lead">Rychlý kontakt — zavolejte pro domluvu termínu</p>
       <div class="fs-4 fw-bold">
-        <a href="tel:+420123456789" class="text-white text-decoration-none"><i class="bi bi-telephone me-2"></i>+420 603
+        <a href="tel:+420603861311" class="text-white text-decoration-none"><i class="bi bi-telephone me-2"></i>+420 603
           861 311</a>
       </div>
       <p class="mt-2 mb-0">Působím: <strong>Praha a okolí</strong> (upravte podle potřeby).</p>
@@ -540,11 +534,13 @@
       <p class="mb-3 fs-5 fw-bold">© <span id="year"></span> Hodinový Manžel</p>
 
       <div class="social-icons fs-1 mb-3">
-        <a href="https://www.facebook.com/antonin.petnik" class="text-white me-3"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/_antony_5/" class="text-white me-3"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/anton%C3%ADn-p%C4%9Btn%C3%ADk-872a8b208/" class="text-white me-3"><i
-            class="bi bi-linkedin"></i></a>
-        <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+        <a href="https://www.facebook.com/antonin.petnik" class="text-white me-3" aria-label="Facebook"><i
+            class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/_antony_5/" class="text-white me-3" aria-label="Instagram"><i
+            class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/anton%C3%ADn-p%C4%9Btn%C3%ADk-872a8b208/" class="text-white me-3"
+          aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="text-white" aria-label="YouTube (coming soon)"><i class="bi bi-youtube"></i></a>
       </div>
 
       <div class="logo">

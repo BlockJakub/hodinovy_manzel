@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Hodinový manžel</title>
+    <title>Imprint &amp; Kontakt | Hodinový manžel</title>
     <meta name="description"
         content="Hodinový manžel – montáže, vrtání, montáž nábytku, výměna lustrů a další drobné domácí práce. Kvalitně, rychle a za férovou cenu.">
 
@@ -23,8 +23,6 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/style_dark.css">
 
-    <!-- jQuery (pro animace) -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Bootstrap bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Vlastní JS -->
@@ -49,8 +47,8 @@
                 <!-- Theme toggle placed next to language switch -->
                 <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
                     aria-label="Toggle theme">
-                    <img id="themeToggleIcon" src="../../Img/icon_moon2.svg" alt="Přepnout motiv" width="28" height="28"
-                        style="vertical-align:middle;" />
+                    <img id="themeToggleIcon" data-base="../../" src="../../Img/icon_moon2.svg" alt="Přepnout motiv"
+                        width="28" height="28" style="vertical-align:middle;" />
                 </div>
             </div>
         </div>
@@ -94,14 +92,10 @@
                 <h1 class="h1">Kontaktní údaje a identifikace</h1>
                 <p><strong>Jméno:</strong> Antonín Pětník</p>
                 <p><strong>Telefon:</strong> <a href="tel:+420603861311">+420 603 861 311</a></p>
-                <p><strong>Email:</strong> <a href="mailto:hodinovymanzel@example.com">hodinovymanzel@example.com</a>
+                <p><strong>Email:</strong> <a href="mailto:info@hodinovymanzel.cz">info@hodinovymanzel.cz</a>
                 </p>
                 <p><strong>Adresa:</strong> Praha, Česká republika</p>
-                <p><strong>IČO:</strong> (doplňte, pokud máte) No natohle se me uz ptali lide. A tak ho hledam.
-                    Heldam.
-                    Stale hledam jak se da.? Ale povim vam az ho najdu tak vam ho predam ale jen na chvili at to zas
-                    najdu.
-                </p>
+                <p><strong>IČO:</strong> Nevztahuje se (fyzická osoba bez živnostenského oprávnění)</p>
             </div>
         </div>
         <div class="container">
@@ -144,26 +138,18 @@
                 </nav>
             </div>
         </footer>
-</body>
-</body>
-<script>
-    // Redirect to 500.html on uncaught JavaScript errors
-    window.onerror = function (message, source, lineno, colno, error) {
-        window.location.href = "500.html";
-        return true;
-    };
-</script>
-
-<!-- jQuery (pro animace) -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<!-- Bootstrap bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Vlastní JS -->
-<script defer src="../../js/sidebar_responsive.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
-<script defer src="../../js/animations.js"></script>
-<script defer src="../../js/theme_toggle.js"></script>
-<script defer src="../../js/update_year.js"></script>
+        <script>
+            // Redirect to 500.html on uncaught JavaScript errors
+            window.onerror = function (message, source, lineno, colno, error) {
+                window.location.href = "500.html";
+                return true;
+            };
+        </script>
+        <!-- Bootstrap bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Vlastní JS -->
+        <script defer src="../../js/sidebar_responsive.js"></script>
+        <script defer src="../../js/theme-toggle.js"></script>
 </body>
 
 </html>

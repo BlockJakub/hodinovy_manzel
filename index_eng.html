@@ -7,6 +7,17 @@
     <title>Handyman</title>
     <meta name="description"
         content="Handyman – furniture assembly, drilling, shelf installation, lamp replacement and other small home repairs. Quality, fast and at a fair price.">
+    <!-- Favicon -->
+    <link rel="icon" href="Img/logo_handy_man_transbg.svg" type="image/svg+xml">
+    <!-- Open Graph / Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Handyman – assembly, repairs, work around the house">
+    <meta property="og:description"
+        content="Shelf installation, furniture assembly, lamp replacement, small repairs. Quality, fast and at a fair price. Prague and surroundings.">
+    <meta property="og:image" content="Img/Firefly_professional_handyman.jpg">
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -15,8 +26,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/style_dark.css">
-    <!-- jQuery (for animations) -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Bootstrap bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
@@ -40,7 +49,7 @@
                 <!-- Theme toggle placed next to language switch -->
                 <div class="theme-toggle" id="themeToggle" role="button" tabindex="0" aria-pressed="false"
                     aria-label="Toggle theme">
-                    <img id="themeToggleIcon" src="Img/icon_moon2.svg" alt="Přepnout motiv" width="28" height="28"
+                    <img id="themeToggleIcon" src="Img/icon_moon2.svg" alt="Toggle theme" width="28" height="28"
                         style="vertical-align:middle;" />
                 </div>
             </div>
@@ -72,6 +81,7 @@
         </div>
     </header>
     <!-- HERO -->
+    <span id="main-content" tabindex="-1" aria-hidden="true"></span>
     <section id="hero" class="text-white d-flex align-items-center parallax-hero mt-5 mb-5" style="min-height:70vh;">
         <!-- Parallax background layer — moved out of inline style so JS can animate it -->
         <div class="hero__bg" aria-hidden="true"
@@ -151,17 +161,7 @@
                 </div>
 
 
-                <!-- Carousel controls -->
-                <div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#faqCarousel"
-                        data-bs-slide="prev" aria-label="Previous question">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#faqCarousel"
-                        data-bs-slide="next" aria-label="Another question">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
-                </div>
+
             </div>
         </div>
     </section>
@@ -348,7 +348,7 @@
                         <a class="about-photo__link" href="https://www.facebook.com/antonin.petnik" target="_blank"
                             rel="noopener noreferrer" aria-label="Facebook">
                             <img src="Img/snowboarder.jpg" alt="Handyman"
-                                class="img-fluid rounded shadow about-photo__img">
+                                class="img-fluid rounded shadow about-photo__img" loading="lazy">
                         </a>
                         <div class="about-photo__overlay" aria-hidden="true">
                             <a class="about-photo__social" href="https://www.facebook.com/antonin.petnik"
@@ -380,7 +380,7 @@
                         <a href="tel:+420 603 861 311" class="btn btn-outline-warning border-muted me-2 btn-rise"><i
                                 class="bi bi-telephone"></i>
                             Call</a>
-                        <a href="mailto:handyman@example.com" class="btn btn-outline-warning btn-rise">Email</a>
+                        <a href="mailto:info@hodinovymanzel.cz" class="btn btn-outline-warning btn-rise">Email</a>
                     </div>
                     <div class="text-center" aria-hidden="true">
                         <a href="#" class="d-inline-block logo" aria-hidden="true"><img
@@ -398,7 +398,8 @@
             <div class="row g-3">
                 <div class="col-sm-6 col-md-4">
                     <div class="portfolio-item position-relative overflow-hidden">
-                        <img src="Img/Firefly_bakingPizza.jpg" alt="Pizza oven construction" class="img-fluid w-100">
+                        <img src="Img/Firefly_bakingPizza.jpg" alt="Pizza oven construction" class="img-fluid w-100"
+                            loading="lazy">
                         <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
                             <h5>Building a pizza oven</h5>
                             <p class="small mb-0">Precise anchoring and masonry following thermodynamics.</p>
@@ -407,7 +408,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="portfolio-item position-relative overflow-hidden">
-                        <img src="Img/furniture.jpg" alt="Furniture assembly" class="img-fluid w-100">
+                        <img src="Img/furniture.jpg" alt="Furniture assembly" class="img-fluid w-100" loading="lazy">
                         <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
                             <h5>Furniture assembly</h5>
                             <p class="small mb-0">Cabinet setup and adjustment.</p>
@@ -416,7 +417,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="portfolio-item position-relative overflow-hidden">
-                        <img src="Img/plumbers.jpg" alt="Siphon replacement" class="img-fluid w-100">
+                        <img src="Img/plumbers.jpg" alt="Siphon replacement" class="img-fluid w-100" loading="lazy">
                         <div class="overlay p-3 bg-dark bg-opacity-75 text-white">
                             <h5>Siphon replacement</h5>
                             <p class="small mb-0">Replacement and sealing of a sink siphon.</p>
@@ -426,59 +427,64 @@
             </div>
         </div>
     </section>
-    <section class="py-5 bg-warning text-dark">
-        <div class="container py-5 rounded shadow-lg bg-transparent text-dark">
-            <h2 class="mb-4 text-center mb-5">Frequently Asked Questions</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div id="faqMiniCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3200"
-                        data-bs-pause="hover" data-bs-wrap="true" aria-label="FAQ mini carousel">
-                        <div class="carousel-indicators mb-1">
-                            <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Do you bring your own tools and materials?"></button>
-                            <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="1"
-                                aria-label="Which areas do you cover?"></button>
-                            <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="2"
-                                aria-label="Do you provide a guarantee for your work?"></button>
-                            <button type="button" data-bs-target="#faqMiniCarousel" data-bs-slide-to="3"
-                                aria-label="What jobs do you not do?"></button>
+    <section id="testimonials" class="py-5 bg-warning text-dark">
+        <div class="container py-5">
+            <h2 class="h2 mb-5 text-center fs-1 fw-bold">Customer Reviews</h2>
+            <div id="testimonialCarousel2" class="carousel slide carousel-dark" data-bs-ride="carousel"
+                data-bs-interval="3700" data-bs-pause="hover" data-bs-wrap="true" aria-label="Testimonials carousel">
+                <div class="carousel-indicators mb-1">
+                    <button type="button" data-bs-target="#testimonialCarousel2" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Review 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel2" data-bs-slide-to="1"
+                        aria-label="Review 2"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel2" data-bs-slide-to="2"
+                        aria-label="Review 3"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel2" data-bs-slide-to="3"
+                        aria-label="Review 4"></button>
+                </div>
+                <div class="carousel-inner" style="min-height: 27vh; height: 27vh; transition: all 0.3s;">
+                    <div class="carousel-item active">
+                        <div
+                            class="card border-0 bg-transparent text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                            <div class="card-body p-4">
+                                <p class="fs-3 mb-4">"Fast and quality work, everything went as agreed. Highly
+                                    recommended!"</p>
+                                <div class="fw-bold text-secondary">Jana S.</div>
+                            </div>
                         </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="p-3 bg-transparent text-dark rounded">
-                                    <h5>Do you bring your own tools and materials?</h5>
-                                    <p>I always bring my own professional tools. Small materials (wall plugs, screws,
-                                        seals) are included in the price. For larger or special parts, I can provide
-                                        them or you can supply them yourself.</p>
-                                </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div
+                            class="card border-0 bg-transparent text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                            <div class="card-body p-4">
+                                <p class="fs-3 mb-4">"Professional attitude, always willing to advise and help. Will
+                                    definitely use again."</p>
+                                <div class="fw-bold text-secondary">Martin K.</div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="bg-transparent text-dark rounded">
-                                    <h5">Which areas do you cover?</h5>
-                                        <p>I mostly work in <strong>Prague and the surrounding area</strong>. For jobs
-                                            outside this area, a small travel fee may apply.</p>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div
+                            class="card border-0 bg-transparent text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                            <div class="card-body p-4">
+                                <p class="fs-3 mb-4">"Great communication, job done quickly. Thank you!"</p>
+                                <div class="fw-bold text-secondary">Petra L.</div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="p-3 bg-transparent text-dark rounded">
-                                    <h5>Do you provide a guarantee for your work?</h5>
-                                    <p>Yes, I stand by my work. If a problem arises within a reasonable time, I will
-                                        come and fix it free of charge.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="p-3 bg-transparent text-dark rounded">
-                                    <h5>What jobs do you not do?</h5>
-                                    <p>I do not perform <strong>complex electrical installations, gas work, or extensive
-                                            plumbing work</strong>. These activities must be entrusted to licensed
-                                        professionals. However, I can help with minor related tasks and recommend
-                                        reliable specialists.</p>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div
+                            class="card border-0 bg-transparent text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                            <div class="card-body p-4">
+                                <p class="fs-2 mb-4">"Absolutely perfect, I recommend to anyone who needs help around
+                                    the house."</p>
+                                <div class="fw-bold text-secondary">Tomáš D.</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     <!-- CONTACT (no form) -->
     <section id="contact" class="py-5 bg-warning text-bg-dark">
@@ -486,7 +492,7 @@
             <h2>Contact</h2>
             <p class="lead">Quick contact — call to arrange a visit</p>
             <div class="fs-4 fw-bold">
-                <a href="tel:+420123456789" class="text-white text-decoration-none"><i
+                <a href="tel:+420603861311" class="text-white text-decoration-none"><i
                         class="bi bi-telephone me-2"></i>+420 603 861 311</a>
             </div>
             <p class="mt-2 mb-0">Area covered: <strong>Prague and surroundings</strong> (adjust as needed).</p>
@@ -499,13 +505,13 @@
         <div class="container">
             <p class="mb-3 fs-5 fw-bold">© <span id="year"></span> Handyman</p>
             <div class="social-icons mb-3">
-                <a href="https://www.facebook.com/antonin.petnik" class="text-white me-3"><i
+                <a href="https://www.facebook.com/antonin.petnik" class="text-white me-3" aria-label="Facebook"><i
                         class="bi bi-facebook"></i></a>
-                <a href="https://www.instagram.com/_antony_5/" class="text-white me-3"><i
+                <a href="https://www.instagram.com/_antony_5/" class="text-white me-3" aria-label="Instagram"><i
                         class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/anton%C3%ADn-p%C4%9Btn%C3%ADk-872a8b208/"
-                    class="text-white me-3"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/anton%C3%ADn-p%C4%9Btn%C3%ADk-872a8b208/" class="text-white me-3"
+                    aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="text-white" aria-label="YouTube (coming soon)"><i class="bi bi-youtube"></i></a>
             </div>
             <div class="logo">
                 <a href="#" class="d-inline-block logo" aria-hidden="true"><img src="Img/logo_handy_man_transbg.svg"
@@ -527,25 +533,23 @@
         </div>
     </footer>
     <!-- Local scripts (deferred) -->
-    <!-- theme toggle moved to header -->
-</body>
-<!-- Load anime.js before logo-anim.js to ensure availability -->
-<script>
-    // Redirect to 500.html on uncaught JavaScript errors
-    window.onerror = function (message, source, lineno, colno, error) {
-        window.location.href = "500.html";
-        return true;
-    };
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
-<script defer src="js/logo-anim.js"></script>
-<script defer src="js/about-overlay.js"></script>
-<script defer src="js/parallax-hero.js"></script>
-<script defer src="js/counters.js"></script>
-<script defer src="js/flip-cards.js"></script>
-<script defer src="js/site-utils.js"></script>
-<script defer src="js/theme-toggle.js"></script>
-
+    <!-- Load anime.js before logo-anim.js to ensure availability -->
+    <script>
+        // Redirect to 500.html on uncaught JavaScript errors
+        window.onerror = function (message, source, lineno, colno, error) {
+            window.location.href = "500.html";
+            return true;
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.iife.min.js"></script>
+    <script defer src="js/logo-anim.js"></script>
+    <script defer src="js/about-overlay.js"></script>
+    <script defer src="js/parallax-hero.js"></script>
+    <script defer src="js/counters.js"></script>
+    <script defer src="js/flip-cards.js"></script>
+    <script defer src="js/site-utils.js"></script>
+    <script defer src="js/theme-toggle.js"></script>
+    <script defer src="js/error_handler.js"></script>
 </body>
 
 </html>
