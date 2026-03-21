@@ -39,6 +39,17 @@
                     p.classList.add('bg-white');
                 }
             });
+
+            const faqCarousel = document.getElementById('faqCarousel');
+            if (faqCarousel) {
+                if (dark) {
+                    faqCarousel.classList.remove('carousel-dark');
+                    faqCarousel.classList.add('carousel-light');
+                } else {
+                    faqCarousel.classList.remove('carousel-light');
+                    faqCarousel.classList.add('carousel-dark');
+                }
+            }
         }
 
         function applyTheme(dark) {
