@@ -54,6 +54,11 @@
     }
 }
 
+/* Scrolled state: restore BG after user scrolls down */
+:root.dark-theme .navbar__menu--scrolled {
+    background-color: var(--surface, #3a3a3a);
+}
+
 /* Dark mode carousel arrow fixes */
 
 /* FAQ: dark bg in dark mode — white arrows (remove the invert) */
